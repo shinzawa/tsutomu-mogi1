@@ -1,6 +1,5 @@
 .content {
     background-color: #FFFFFF;
-
 }
 
 .content__heading {
@@ -13,27 +12,24 @@
     text-align: center;
     color: #000000;
 }
-.login-form__inner {
+.register-form__inner {
     display: flex;
     justify-content: center;
     margin-top: 48px;
 }
 
-.login-form__form {
+.register-form__form {
     width: 680px;
     border: 0;
 }
 
-.login-form__group {
-    margin-top: 32px;
+.register-form__group {
+    margin-bottom: 32px;
 }
 
-.login-form__group:first-of-type {
-    margin-top: 0;
-}
-
-.login-form__label {
+.register-form__label {
     display: block;
+    margin-bottom: 8px;
     margin-bottom: 8px;
     font-family: Inter;
     font-weight: 700;
@@ -44,7 +40,7 @@
     color: #000000;
 }
 
-.login-form__input {
+.register-form__input {
     display: block;
     padding: 8px 12px;
     background-color: #FFFFFF;
@@ -59,11 +55,11 @@
     border: 1px solid #5F5F5F;
 }
 
-.login-form__error-message {
+.register-form__error-message {
     color: #FF0000;
 }
 
-.login-form__btn {
+.register-form__btn {
     width: 680px;
     height: 65px;
     margin-top: 80px;
@@ -81,13 +77,13 @@
     color: #FFFFFF;
 }
 
-.login__nav-href {
+.register__nav-href {
     display: flex;
     justify-content: center;
     margin-top: 34px;
 }
 
-.login__nav {
+.register__nav {
     text-decoration: none;
     font-family: Inter;
     font-weight: 400;
