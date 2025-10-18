@@ -22,36 +22,103 @@ input::placeholder {
 
 /* ヘッダー */
 .header {
-    display: grid;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 1512px;
     padding: 22px 0 24px 0;
     height: 82px;
     border: 1px solid #E0DFDE;
     text-align: center;
     font-family: serif;
     background-color: #000000;
-
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
 }
+
 .header__heading {
     width: 370px;
     height: 36px;
     background-image: url('../logo.png');
     background-position: 25px 0;
-    padding-left:25px;
-    grid-column: 1;
+    padding-left: 25px;
+}
+
+.header__search {
+    width: 565px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-form__search::placeholder {
+    color: #000000;
+}
+
+.header-form__search {
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: start;
+    vertical-align: middle;
 }
 
 .header__link {
+    width: 463px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-form__link,
+.header__link-mypage {
     margin: 0 auto;
-    width: 80px;
-    border: 1px solid #D9C6B5;
-    background-color: #F0F0F0;
-    color: #D9C6B5;
+    width: 135px;
+    border: 0;
+    background-color: #000000;
+    color: #FFFFFF;
     text-decoration: none;
 
-    grid-column: 3;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.header__link-rect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    margin-right: 26px;
+    border-radius: 4px;
+    background: #FFFFFF;
+}
+
+.header__link-sell {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #000000;
 }
 
 /* コンテンツ */
