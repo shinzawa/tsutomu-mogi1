@@ -1,9 +1,5 @@
-.content {
-    background-color: #FFFFFF;
-
-}
-
-.content__heading {
+.login-form__heading {
+    margin-top: 121px;
     font-family: Inter;
     font-weight: 700;
     font-style: Bold;
@@ -13,6 +9,7 @@
     text-align: center;
     color: #000000;
 }
+
 .login-form__inner {
     display: flex;
     justify-content: center;
