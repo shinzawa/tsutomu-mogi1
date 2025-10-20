@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @endsection
 
@@ -32,14 +32,14 @@
 @endsection
 
 @section('content')
-<div class="item__alert">
+<div class="index__alert">
     @if(session('message'))
-    <div class="item__alert--success">
+    <div class="index__alert--success">
         {{ session('message') }}
     </div>
     @endif
     @if($errors->any())
-    <div class="item__alert--danger">
+    <div class="index__alert--danger">
         <ul>
             @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -49,36 +49,46 @@
     @endif
 </div>
 
-<div class="item__content">
-    <div class="item__tab">
-        <div class="item__tab-item">
-            <span>おすすめ</span>
+<div class="index__list">
+    <div class="index__tab">
+        @if (Auth::check())
+        <div class="index__tab-item" styel="color:#5F5F5F;">
+            おすすめ
         </div>
-        <div class="item__tab-item">
-            <span>マイリスト</span>
+        <div class="index__tab-item" style="color:#FF0000;">
+            マイリスト
         </div>
+        @else
+        <div class="index__tab-item" style="color:#FF0000;">
+            おすすめ
+        </div>
+        <div class="index__tab-item" styel="color:#5F5F5F;">
+            マイリスト
+        </div>
+        @endif
     </div>
-    <div class="item-main">
-
-        <div class="item-card__frame">
-            <div class="item-card__list">
-                @foreach($items as $item)
+</div>
+<hr color="#5F5F5F" size="2px" width="1510px">
+<div class="index__content">
+    <div class="index-main">
+        <div class="index-card__frame">
+            @foreach($items as $item)
+            <div class="index-card__list">
                 <a href="/items/{{ $item->id}}" class="item-card">
-                    <div class="item-card__item">
-                        <div class="item-card__image">
-                            <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="374px" height="340px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
+                    <div class="index-card__item">
+                        <div class="index-card__image">
+                            <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="290px" height="282px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
                         </div>
-                        <div class="item-card__title">
-                            <span class="item-cart__title-name"> {{ $item->name }}</span>
-                            <span class="item-card__title-sold"></span>
+                        <div class="index-card__title">
+                            <span class="index-cart__title-name"> {{ $item->name }}</span>
+                            <span class="index-card__title-sold">Sold</span>
                         </div>
                     </div>
                 </a>
-                @endforeach
-
             </div>
+            @endforeach
         </div>
     </div>
 </div>
-<script src="{{ asset('/js/item.js') }}"></script>
+<script src="{{ asset('/js/index.js') }}"></script>
 @endsection

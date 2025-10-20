@@ -16,9 +16,7 @@
             <div class="header__heading"></div>
             @yield('link')
         </header>
-        <div class="content">
             @yield('content')
-        </div>
     </div>
 </body>
 

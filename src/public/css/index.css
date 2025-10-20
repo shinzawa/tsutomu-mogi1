@@ -1,81 +1,90 @@
-@media screen and (max-width: 2000px) {
-    .item__content {
-        height: 1100px;
-    }
+.index__content {
+    width: 1510px;
+    height: auto;
+}
+.index-main {
+    width: 100%;
+}
+.index-card__frame {
+    width: 100%;
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
 
-    .item-card__frame {
-        flex-grow: 1;
-        height: auto;
-        padding-left: 20px;
-
-    }
-
-    .item-card__list {
-        width: 1212px;
-        display: flex;
-        height: auto;
-        flex-wrap: wrap;
-    }
+    flex-grow: 1;
+    padding-left: 69px;
 }
 
+
 @media screen and (max-width: 1500px) {
-    .item__content {
-        height: 1500px;
-    }
 
-    .item-card__frame {
-        flex-grow: 1;
-        height: auto;
-        padding-left: 20px;
-
-    }
-
-    .item-card__list {
-        width: 838px;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap;
-    }
 }
 
 @media screen and (max-width: 1100px) {
-    .item__content {
-        height: 2800px;
-    }
 
-    .item-card__frame {
-        flex-grow: 1;
-        height: auto;
-        padding-left: 20px;
-    }
-
-    .item-card__list {
-        width: 419px;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap;
-    }
 }
 
-.item-card__item {
-    width: 374px;
-    height: 420px;
+.index__list {
+    width: 100%;
+    margin-top: 47px;
+}
+
+.index__tab {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 47px;
+}
+
+.index__tab-item:first-of-type {
+    margin-left: 129px;
+}
+
+.index__tab-item {
+    width: 155px;
+    height: 47px;
+
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: right;
+    padding: 12px 0;
+    margin-left: 52px;
+}
+
+.index-card__list {
+    margin-top: 72px;
+    margin-right: 70px;
+}
+
+.index-card__item {
+    width: 290px;
+    height: auto;
     cursor: pointer;
-    margin-right: 20px;
 }
 
-.item-card__image {
-    width: 374px;
-    height: 350px;
+.index-card__image {
+    width: 290px;
+    height: 282px;
 }
 
-.item-card__title {
-    width: 374px;
-    height: 69px;
+.index-card__title {
+    width: 290px;
+    height: 30px;
     display: flex;
     justify-content: space-between;
+
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 25px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle; 
 }
 
-.item-card__title-name {
+.index-card__title-name {
     width: 20%;
 }
