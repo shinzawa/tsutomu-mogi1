@@ -48,17 +48,17 @@
                         <p class="item-card__title-price">￥ <span> {{number_format($item->price)}} </span>（税込み）</p>
                         <div class="item-card__actions">
                             <div class="item-card__nice">
-                                <div class="item-card__nice-icon">
+                                <div id="item-card__nice-btn" class="item-card__nice-icon">
                                 </div>
                                 <div class="item-card__nice-count">
-                                    3
+                                    {{ count($nices) }}
                                 </div>
                             </div>
                             <div class="item-card__comment">
                                 <div class="item-card__comment-icon">
                                 </div>
                                 <div class="item-card__comment-count">
-                                    1
+                                    {{ count($comments) }}
                                 </div>
                             </div>
                         </div>
@@ -98,10 +98,7 @@
 
                         </div>
                         <div class="item__comments">
-                            @php
-                            $count = 0;
-                            @endphp
-                            <div class="item__comments-title">{{ 'コメント(' .  $count .')'}}</div>
+                            <div class="item__comments-title">{{ 'コメント(' .  count($comments) .')'}}</div>
                             <div class="item__comments-list">
                                 @foreach($comments as $comment)
                                 <!-- $comment->user_id からuser,user->profile,profile->image and user->name 取得-->

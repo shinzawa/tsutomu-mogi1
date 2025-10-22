@@ -199,6 +199,10 @@
     width: 40px;
     height: 40px;
     background-image: url('../star8.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: red;
+    cursor:pointer;
 }
 
 .item-card__nice-count {

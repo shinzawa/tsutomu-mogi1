@@ -81,7 +81,9 @@
                         </div>
                         <div class="index-card__title">
                             <span class="index-cart__title-name"> {{ $item->name }}</span>
+                            @if (count($item->buyUsers()->get()) > 0)
                             <span class="index-card__title-sold">Sold</span>
+                            @endif
                         </div>
                     </div>
                 </a>
