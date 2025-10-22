@@ -34,14 +34,12 @@
 <div class="profile-form">
     <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
     <div class="profile-form__inner">
-        <form action="/profile" method="post" enctype="mutipart/form-data">
+        <form action="/mypage/profile" method="post" enctype="multipart/form-data">
             @csrf
             <div class="profile-form__group-image">
                 <div>
-                    <image src="{{ asset(  'storage/' . request('image') )}}" width="150px" height="150px" style="object-fit:cover;display:none;border-radius:50%;" alt="{{ request('image')}}" id="preview"></image>
+                    <image src="{{ asset(  'storage/' . old('image',isset($profile) ? $profile->image : '') )}}" width="150px" height="150px" style="object-fit:cover;border-radius:50%;" alt="{{ $profile->image}}" id="preview"></image>
                 </div>
-
-                <div class="profile-card__image" id="dummy"></div>
                 <div class="profile-card__image-name">
                     <label for="image">
                         <div class="profile-form__imagefile">
@@ -63,7 +61,7 @@
                     ユーザー名
                 </label>
 
-                <input class="profile-form__input" type="text" name="name" id="name">
+                <input class="profile-form__input" type="text" name="name" id="name" value="{{ old('name', isset($profile) ? $profile['name'] : '') }}">
 
                 <div class="profile-form__error-message">
                     @error('name')
@@ -77,7 +75,7 @@
                     郵便番号
                 </label>
                 <div class="profile-form__zipcode-inputs">
-                    <input class="profile-form__input profile-form__zipcode-input" type="zipcode" name="zipcode" id="zipcode">
+                    <input class="profile-form__input profile-form__zipcode-input" type="zipcode" name="zipcode" id="zipcode" value="{{ old('zipcode', isset($profile) ? $profile['zipcode'] : '') }}">
                 </div>
                 <p class="profile-form__error-message">
                     @error('zipcode')
@@ -90,7 +88,7 @@
                 <label class="profile-form__label" for="address">
                     住所
                 </label>
-                <input class="profile-form__input" type="text" name="address" id="address">
+                <input class="profile-form__input" type="text" name="address" id="address" value="{{ old('address', isset($profile) ? $profile['address'] : '') }}">
                 <p class="profile-form__error-message">
                     @error('address')
                     {{ $message }}
@@ -100,7 +98,7 @@
 
             <div class="profile-form__group">
                 <label class="profile-form__label" for="building">建物名</label>
-                <input class="profile-form__input" type="text" name="building" id="building">
+                <input class="profile-form__input" type="text" name="building" id="building" value="{{ old('building', isset($profile) ? $profile['building'] : '') }}">
             </div>
             <input class="profile-form__btn btn" type="submit" value="更新する">
         </form>

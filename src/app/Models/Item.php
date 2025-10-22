@@ -20,4 +20,6 @@ class Item extends Model
     {
         return $this->belongsToMany(Comment::class)->withPivot(['comment','user_id']);
     }
+
+    
 }
