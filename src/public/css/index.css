@@ -2,9 +2,11 @@
     width: 1510px;
     height: auto;
 }
+
 .index-main {
     width: 100%;
 }
+
 .index-card__frame {
     width: 100%;
     display: flex;
@@ -16,13 +18,9 @@
 }
 
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1500px) {}
 
-}
-
-@media screen and (max-width: 1100px) {
-
-}
+@media screen and (max-width: 1100px) {}
 
 .index__list {
     width: 100%;
@@ -54,6 +52,10 @@
     margin-left: 52px;
 }
 
+.index__tab a {
+    text-decoration: none;
+}
+
 .index-card__list {
     margin-top: 72px;
     margin-right: 70px;
@@ -82,7 +84,7 @@
     font-size: 25px;
     line-height: 100%;
     letter-spacing: 0%;
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
 .item-card {

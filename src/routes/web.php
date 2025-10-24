@@ -17,21 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ItemController::class, 'index']);
+Route::get('/{tab?}', [ItemController::class, 'index']);
+
 Route::get('/items/{item_id}', [ItemController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/{tab}', [ItemController::class, 'index']);
-    Route::get('/profile',  function () {
-        return view('profile');
-    });
-    Route::post('/profile', [ProfileController::class, 'create']);
+    Route::get('/profile_create',  [ProfileController::class, 'show']);
+    Route::post('/profile_create', [ProfileController::class, 'create']);
+    Route::get('/mypage', [MypageItemController::class, 'mypage']);
+    Route::get('/mypage/profile',  [ProfileController::class, 'edit']);
+    Route::post('/mypage/profile', [ProfileController::class, 'update']);
+    Route::post('/mypage/comment', [ProfileController::class, 'create_comment']);
     Route::get('/purchase/{item_id}', [ItemController::class, 'purchase']);
     Route::get('/purchase/address/{item_id}', [ItemController::class, 'address']);
     Route::get('/sell', [ItemController::class, 'sell']);
-    Route::post('/mypage', [MypageItemController::class, 'mypage']);
-    Route::get('/mypage/profile',  function () {
-        return view('profile_edit');
-    });
-    Route::post('/mypage/profile', [ProfileController::class, 'update']);
-    Route::post('/mypage/comment', [ProfileController::class, 'create_comment']);
 });

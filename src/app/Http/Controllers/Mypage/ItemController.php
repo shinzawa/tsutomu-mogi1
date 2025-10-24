@@ -20,6 +20,6 @@ class ItemController extends Controller
         $buyItems = $user->buyItems()->get();
         $exhibitItems = $user->exhibitItems()->get();
 
-        return view('mypageIndex', compact('profile', 'buyItems', 'exhibitItems'));
+        return view('/mypage/index', compact('profile', 'buyItems', 'exhibitItems'));
     }
 }

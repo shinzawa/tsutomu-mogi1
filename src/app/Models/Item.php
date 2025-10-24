@@ -18,8 +18,26 @@ class Item extends Model
 
     public function comments()
     {
-        return $this->belongsToMany(Comment::class)->withPivot(['comment','user_id']);
+        return $this->belongsToMany(User::class)->withPivot('comment');
     }
 
-    
+    public function nices()
+    {
+        return $this->belongsToMany(User::class, 'user_nice_items', 'item_id', 'user_id');
+    }
+
+    public function buyUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_buy_items', 'item_id', 'user_id');
+    }
+
+    public function exhibitUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_exhibit_items', 'item_id', 'user_id');
+    }
+
+    public function scopeNameSearch($query, $name)
+    {
+        $query->where('name', 'like', '%' . $name . '%');
+    }
 }
