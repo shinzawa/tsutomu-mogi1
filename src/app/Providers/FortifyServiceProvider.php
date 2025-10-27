@@ -26,7 +26,7 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
             public function toResponse($request)
             {
-                return redirect('/profile_create');
+                return redirect('/profile/create');
             }
         });
     }

@@ -58,4 +58,15 @@ class ItemController extends Controller
 
         return view('item', compact('item', 'categories', 'comments', 'nices'));
     }
+
+    public function purchase($item_id) 
+    {
+        return view('mypage/buy/purchase');
+    }
+
+    public function address($item_id)
+    {
+        return view('mypage/buy/address');
+    }
+    
 }

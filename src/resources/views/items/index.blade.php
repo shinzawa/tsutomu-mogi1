@@ -26,7 +26,7 @@
     @endif
     <a href="/mypage" class="header__link-mypage">マイページ</a>
     <div class="header__link-rect">
-        <a href="/sell" class="header__link-sell">出品</a>
+        <a href="/exhibit" class="header__link-sell">出品</a>
     </div>
 </div>
 @endsection
@@ -59,7 +59,7 @@
         <form action="/mylist" method="get" id="searchMylist">
             <div>
                 <input type="hidden" id="hidden-search" name="itemname">
-                <input type="submit" value="マイリスト" onclick="copySearchValue()" class="index__tab-item" style={{ $ismylist ? "color:#FF0000;" : "color:#5F5F5F;" }}>
+                <input type="submit" value="マイリスト" onclick="copySearchValue()" class="index__tab-item" style={{ $ismylist ? "color:#FF0000;" : "color:#5F5F5F;"}} >
             </div>
         </form>
     </div>
@@ -72,23 +72,23 @@
             @foreach($items as $item)
             <div class="index-card__list">
                 <a href="/items/{{ $item->id}}" class="item-card">
-                    <div class="index-card__item">
-                        <div class="index-card__image">
-                            <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="290px" height="282px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
-                        </div>
-                        <div class="index-card__title">
-                            <span class="index-cart__title-name"> {{ $item->name }}</span>
-                            @if (count($item->buyUsers()->get()) > 0)
-                            <span class="index-card__title-sold">Sold</span>
-                            @endif
-                        </div>
+                <div class="index-card__item">
+                    <div class="index-card__image">
+                        <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="290px" height="282px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
                     </div>
+                    <div class="index-card__title">
+                        <span class="index-cart__title-name"> {{ $item->name }}</span>
+                        @if (count($item->buyUsers()->get()) > 0)
+                        <span class="index-card__title-sold">Sold</span>
+                        @endif
+                    </div>
+                </div>
                 </a>
             </div>
             @endforeach
             @endif
-        </div>
     </div>
+</div>
 </div>
 <script src="{{ asset('/js/index.js') }}"></script>
 @endsection

@@ -13,7 +13,7 @@ class ProfileController extends Controller
 {
     public function show(Request $request)
     {
-        return view('/profile_create');
+        return view('/profile/create');
     }
 
     public function create(Request $request)
@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $user = User::find($id);
         $profiles = $user->profile()->get();
         $profile = $profiles[0];
-        return view('/profile_edit', compact('profile'));
+        return view('/profile/edit', compact('profile'));
     }
 
     public function update(Request $request)

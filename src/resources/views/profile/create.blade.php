@@ -25,7 +25,7 @@
     @endif
     <a href="/mypage" class="header__link-mypage">マイページ</a>
     <div class="header__link-rect">
-        <a href="/sell" class="header__link-sell">出品</a>
+        <a href="/exhibit" class="header__link-sell">出品</a>
     </div>
 </div>
 @endsection
@@ -34,7 +34,7 @@
 <div class="profile-form">
     <h2 class="profile-form__heading content__heading">プロフィール設定</h2>
     <div class="profile-form__inner">
-        <form action="/profile_create" method="post" enctype="multipart/form-data">
+        <form action="/profile/create" method="post" enctype="multipart/form-data">
             @csrf
             <div class="profile-form__group-image">
                 <div>

@@ -26,7 +26,7 @@
     @endif
     <a href="/mypage" class="header__link-mypage">マイページ</a>
     <div class="header__link-rect">
-        <a href="/sell" class="header__link-sell">出品</a>
+        <a href="/exhibit" class="header__link-sell">出品</a>
     </div>
 </div>
 @endsection
@@ -36,7 +36,7 @@
     <div class="product-detail">
         <div class="product__image-area">
             <div class="product__image-card">
-                    <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="600px" height="600px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
+                <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="600px" height="600px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
             </div>
         </div>
         <div class="product__description-area">
@@ -63,9 +63,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item__purchase-area">
-                        <button class="item__purchase-btn">購入手続きへ</button>
-                    </div>
+                    <form action="/purchase/{{ $item->id }}" method="get" class="purchase-form">
+                        <div class="item__purchase-area">
+                            <button class="item__purchase-btn">購入手続きへ</button>
+                        </div>
+                    </form>
+
                     <div class="item__description-area">
                         <div class="item__description-title">
                             商品説明
@@ -83,47 +86,47 @@
                                 <div class="item__information-category">{{ $category->name}}</div>
                                 @endforeach
                             </div>
-</div>
-                            <div class="item__information-condition">
-                                @php
-                                switch($item->condition) {
-                                case 1: $condition='良好'; break;
-                                case 2: $condition='目立った傷や汚れなし'; break;
-                                case 3: $condition='やや傷や汚れあり'; break;
-                                case 4: $condition='状態が悪い'; break;
-                                }
-                                @endphp
-                                商品の状態<span>{{ $condition }}</span>
-                            </div>
-
                         </div>
-                        <div class="item__comments">
-                            <div class="item__comments-title">{{ 'コメント(' .  count($comments) .')'}}</div>
-                            <div class="item__comments-list">
-                                @foreach($comments as $comment)
-                                <!-- $comment->user_id からuser,user->profile,profile->image and user->name 取得-->
-                                <div class="item__comments-content">
-                                    @if (!empty($comment))
-                                    {{ $comment->pivot->comment }}
-                                    @endif
-                                </div>
-                                @endforeach
-                            </div>
-                            <div class="item__comments-input">
-                                <form action="/mypage/comment" class="form">
-                                    <div class="item__comments-input-title">商品へのコメント</div>
-                                    <textarea name="comment" id="" class="item__comments-input-text"></textarea>
-                                    <button class="item__comments-btn">
-                                        <div>コメントを送信する</div>
-                                    </button>
-                                </form>
+                        <div class="item__information-condition">
+                            @php
+                            switch($item->condition) {
+                            case 1: $condition='良好'; break;
+                            case 2: $condition='目立った傷や汚れなし'; break;
+                            case 3: $condition='やや傷や汚れあり'; break;
+                            case 4: $condition='状態が悪い'; break;
+                            }
+                            @endphp
+                            商品の状態<span>{{ $condition }}</span>
+                        </div>
 
+                    </div>
+                    <div class="item__comments">
+                        <div class="item__comments-title">{{ 'コメント(' .  count($comments) .')'}}</div>
+                        <div class="item__comments-list">
+                            @foreach($comments as $comment)
+                            <!-- $comment->user_id からuser,user->profile,profile->image and user->name 取得-->
+                            <div class="item__comments-content">
+                                @if (!empty($comment))
+                                {{ $comment->pivot->comment }}
+                                @endif
                             </div>
+                            @endforeach
+                        </div>
+                        <div class="item__comments-input">
+                            <form action="/mypage/comment" class="form">
+                                <div class="item__comments-input-title">商品へのコメント</div>
+                                <textarea name="comment" id="" class="item__comments-input-text"></textarea>
+                                <button class="item__comments-btn">
+                                    <div>コメントを送信する</div>
+                                </button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="{{ asset('/js/item.js') }}"></script>
-    @endsection
+</div>
+<script src="{{ asset('/js/item.js') }}"></script>
+@endsection
