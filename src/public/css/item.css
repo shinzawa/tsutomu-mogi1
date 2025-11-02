@@ -198,10 +198,9 @@
 .item-card__nice-icon {
     width: 40px;
     height: 40px;
-    background-image: url('../star8.png');
+    background-image: url("../star8red.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: red;
     cursor:pointer;
 }
 
@@ -313,7 +312,12 @@
     height: 30px;
     border-radius: 15px;
     background: #D9D9D9;
+    margin: 5px 5px;
+    display: flex;
+    justify-content: center;
+}
 
+.item__information-category span{
     font-family: Inter;
     font-weight: 400;
     font-size: 20px;
@@ -321,6 +325,7 @@
     letter-spacing: 0%;
     text-align: center;
     vertical-align: middle;
+    padding-top:5px;
 }
 
 .item__information-condition {
@@ -412,4 +417,8 @@
     line-height: 100%;
     text-align: center;
     vertical-align: middle;
+}
+
+.comment-form__error-message {
+    color: #FF0000;
 }

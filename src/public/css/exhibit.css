@@ -1,0 +1,316 @@
+.exhibit-form {
+    width: 1512px;
+    justify-content: center;
+}
+
+.exhibit-form__area {
+    width: 680px;
+    border: 0;
+    margin: 0 auto;
+}
+
+.exhibit-form__heading {
+    margin-top: 63px;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000000;
+}
+
+.exhibit-form__inner {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+}
+
+.exhibit-form__inner form{
+    width: 680px;
+    height: auto;
+}
+.exhibit-form__group-image {
+position:relative;
+width: 50vw;
+margin: 5px auto 75px auto;
+}
+.exhibit-card__image-title {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #000000;
+}
+.exhibit-card__image {
+    width: 680px;
+    height: 150px;
+    border: 1px solid #5F5F5F
+}
+
+.exhibit-card__image-name {
+
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.exhibit-form__imagefile-parent {
+    width: 165px;
+    height: 43px;
+    border: 2px solid #FF5655;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.exhibit-form__imagefile {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+
+    color: #FF5555;
+    cursor: pointer;
+}
+
+.exhibit-form__filename {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+.exhibit-detail__category-area {
+    width: 680px;
+}
+
+.exhibit-card__item-category-title {
+    display: flex;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+.exhibit-detail__item-category-title {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #000000;
+}
+.exhibit-detail__item-categories {
+    width: 680px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 34px auto;
+}
+
+.exhibit-detail__title {
+    width: 150;
+    height: 36;
+
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 100%;
+    color:#5F5F5F;
+    margin-bottom:12px;
+}
+
+input[type=checkbox] {
+     display: none;
+}
+
+input[type="checkbox"]:checked + label 
+{ 
+    background: #FF5655;
+    color: #ffffff;
+}
+
+.exhibit-detail__item-category {
+    height: 32px;
+    padding: 7px 15px;
+    margin:5px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    border: 2px solid #FF5655;
+    color: #FF5655;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: auto;
+    cursor: pointer;
+}
+
+.exhibit-detail__item-condition-title {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    color: #000000;
+    margin: 34px auto 11px auto;
+}
+
+.exhibit-detail__item-condition {
+    width: 680px;
+    height: 45px;
+    position: relative;
+    display: inline-block;
+    margin-top: 11px;
+}
+
+.exhibit-detail__item-condition select {
+      /* デフォルトの矢印を消す */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* サイズやフォントなどのスタイルを調整 */
+  width: 680px;
+  padding: 8px;
+  border: 1px solid #5F5F5F;
+  border-radius: 4px;
+}
+
+.exhibit-detail__item-condition::after {
+  content: '▼'; /* ここに好きな記号を指定 */
+  font-size: 10px;
+  color: #555;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  /* 矢印部分がクリックできないようにする */
+  pointer-events: none;
+}
+
+.exhibit-form__group-name {
+    margin-top: 82px;
+}
+
+.exhibit-form__label {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+}
+
+
+.exhibit-form__item-name-card {
+    width: 680px;
+    height: auto;
+    margin-top:72px;
+}
+
+.exhibit-form__input {
+    width: 680px;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid #5F5F5F;
+    color: #5F5F5F;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+.exhibit-form__input-textarea{
+    width: 680px;
+    height: 125px;
+    border-radius: 4px;
+    border: 1px solid #5F5F5F;
+    color: #5F5F5F;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+.exhibit-form__input-price {
+    background-image:url(../yenmark.png);
+    background-position: 2px center;
+    padding-left: 30px;
+    width: 680px;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid #5F5F5F;
+    color: #5F5F5F;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+.exhibit-form__group {
+    margin-top: 68px;
+}
+
+.exhibit-form__label {
+    display: block;
+    margin-bottom: 8px;
+    margin-bottom: 8px;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #000000;
+}
+
+.exhibit-form__error-message {
+    color: #FF0000;
+}
+
+.exhibit-form__btn {
+    width: 680px;
+    height: 65px;
+    margin-top: 80px;
+    left: 417px;
+    border-radius: 5px;
+    background: #FF5555;
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 26px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #FFFFFF;
+}
+
+.exhibit__nav-href {
+    display: flex;
+    justify-content: center;
+    margin-top: 34px;
+}
+
+.exhibit__nav {
+    text-decoration: none;
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #0073CC;
+}

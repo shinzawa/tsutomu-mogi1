@@ -7,6 +7,9 @@
     <title>furima</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link rel="stylesheet" href="{{ asset('css/common.css')}}">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     @yield('css')
 </head>
 
@@ -16,7 +19,7 @@
             <div class="header__heading"></div>
             @yield('link')
         </header>
-            @yield('content')
+        @yield('content')
     </div>
 </body>
 

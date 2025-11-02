@@ -16,9 +16,10 @@ class ItemController extends Controller
         if ($tab == 'mylist') {
             $ismylist = true;
             if (Auth::check()) {
+                $items = [];
                 foreach ($itemsAll as $item) {
                     $nicesUsers = $item->nices()->get();
-                    $ar[] = 0;
+                    $ar = [];
                     if (count($nicesUsers) > 0) foreach ($nicesUsers as $nUser) {
                         $ar[] = $nUser->id;
                     }
@@ -53,13 +54,62 @@ class ItemController extends Controller
     {
         $item = Item::find($item_id);
         $categories = $item->categories()->get();
-        $nices = $item->nices()->get();
         $comments = $item->comments()->get();
 
-        return view('item', compact('item', 'categories', 'comments', 'nices'));
+        $id = Auth::id();
+
+        $nices = $item->nices()->get();
+        if (!empty($nices)) {
+            $ids = [];
+            foreach ($nices as $nice) {
+                $ids[] = $nice->id;
+            }
+            $isnice = in_array($id, $ids);
+        } else {
+            $isnice = false;
+        }
+
+        return view('item', compact('item', 'categories', 'comments', 'nices', 'isnice'));
     }
 
-    public function purchase($item_id) 
+    public function change($item_id)
+    {
+        $item = Item::find($item_id);
+        $categories = $item->categories()->get();
+        $comments = $item->comments()->get();
+
+        $id = Auth::id();
+
+        $nices = $item->nices()->get();
+        if (!empty($nices)) {
+            $ids = [];
+            foreach ($nices as $nice) {
+                $ids[] = $nice->id;
+            }
+            if (in_array($id, $ids)) {
+                $item->nices()->detach($id);
+            } else {
+                $item->nices()->attach($id);
+            }
+        } else {
+            $item->nices()->attach($id);
+        }
+
+        $nices = $item->nices()->get();
+        if (!empty($nices)) {
+            $ids = [];
+            foreach ($nices as $nice) {
+                $ids[] = $nice->id;
+            }
+            $isnice = in_array($id, $ids);
+        } else {
+            $isnice = false;
+        }
+
+        return view('/item', compact('item', 'categories', 'comments', 'nices', 'isnice'));
+    }
+
+    public function purchase($item_id)
     {
         return view('mypage/buy/purchase');
     }
@@ -68,5 +118,4 @@ class ItemController extends Controller
     {
         return view('mypage/buy/address');
     }
-    
 }

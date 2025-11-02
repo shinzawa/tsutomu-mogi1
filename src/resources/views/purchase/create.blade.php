@@ -66,15 +66,22 @@
         <div class="purchase-address">
             <div class="purchase-address-card-title">
                 <p class="purchase-address-title">送付先</p>
-                <a href="/purchase/address">
+                <a href="/purchase/address/{{ $purchase->id }}">
                     <button class="purchase-address-change-btn">変更する</button>
                 </a>
             </div>
             <div class="purchase-address-card">
+                @if (!empty($newaddress))
+                <div>
+                    <p>{{ $newaddress['zipcode'] }}</p>
+                    <p><span>{{$newaddress['address']}}</span> <span>{{$newaddress['building']}}</span> </p>
+                </div>
+                @else
                 <div>
                     <p>{{$profile->zipcode}}</p>
                     <p><span>{{$profile->address}}</span> <span>{{$profile->building}}</span> </p>
                 </div>
+                @endif
             </div>
         </div>
         <hr class="purchase-action__title" size="1px" width="805px" color="#000000">

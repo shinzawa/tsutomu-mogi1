@@ -7,19 +7,19 @@
 
 @section('link')
 <div class="header__search">
-    <form action="/search" method="post">
+    <form action="/search" method="post" novalidate>
         @csrf
         <input class="header-form__search" type="text" name="text" placeholder="    なにをお探しですか？">
     </form>
 </div>
 <div class="header__link">
     @if (Auth::check())
-    <form action="{{ route('logout')}}" method="post">
+    <form action="{{ route('logout')}}" method="post" novalidate>
         @csrf
         <input class="header-form__link" type="submit" value="ログアウト">
     </form>
     @else
-    <form action="/login" method="get">
+    <form action="/login" method="get" novalidate>
         @csrf
         <input class="header-form__link" type="submit" value="ログイン">
     </form>
@@ -48,8 +48,17 @@
                         <p class="item-card__title-price">￥ <span> {{number_format($item->price)}} </span>（税込み）</p>
                         <div class="item-card__actions">
                             <div class="item-card__nice">
-                                <div id="item-card__nice-btn" class="item-card__nice-icon">
-                                </div>
+                                <a href="/items/nice/{{ $item->id }}" class="item-form__nice-icon">
+                                    @php
+                                    if ($isnice) {
+                                    $starImage = '../../../star8red.png';
+                                    } else {
+                                    $starImage = '../../../star8.png';
+                                    }
+                                    @endphp
+                                    <input type="button" id="item-card__nice-btn" class="item-card__nice-icon"
+                                        style="background-image:url({{ $starImage }});">
+                                </a>
                                 <div class="item-card__nice-count">
                                     {{ count($nices) }}
                                 </div>
@@ -63,7 +72,8 @@
                             </div>
                         </div>
                     </div>
-                    <form action="/purchase/{{ $item->id }}" method="get" class="purchase-form">
+                    <form action="/purchase/{{ $item->id }}" method="get" class="purchase-form" novalidate>
+                        @csrf
                         <div class="item__purchase-area">
                             <button class="item__purchase-btn">購入手続きへ</button>
                         </div>
@@ -83,7 +93,9 @@
                             カテゴリー
                             <div class="item__information-categories">
                                 @foreach($categories as $category)
-                                <div class="item__information-category">{{ $category->name}}</div>
+                                <div class="item__information-category">
+                                    <span>{{ $category->name}}</span>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -113,14 +125,21 @@
                             @endforeach
                         </div>
                         <div class="item__comments-input">
-                            <form action="/mypage/comment" class="form">
-                                <div class="item__comments-input-title">商品へのコメント</div>
-                                <textarea name="comment" id="" class="item__comments-input-text"></textarea>
+                            <div class="item__comments-input-title">商品へのコメント</div>
+                            <form action="/comment/{{ $item->id }}" method="post" class="comment-form" novalidate>
+                                @csrf
+                                <input type="textarea" name="comment" class="item__comments-input-text"></input>
+                                <p class="comment-form__error-message">
+                                    @error('comment')
+                                    {{ $message }}
+                                    @enderror
+                                </p>
                                 <button class="item__comments-btn">
-                                    <div>コメントを送信する</div>
+                                    <div>
+                                        コメントを送信する
+                                    </div>
                                 </button>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -128,5 +147,5 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('/js/item.js') }}"></script>
+<script src="{{ asset('/js/items.js') }}"></script>
 @endsection

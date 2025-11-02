@@ -73,7 +73,8 @@
                         <p class="exhibit-detail__item-category-title">カテゴリー</p>
                         <div class="exhibit-detail__item-categories">
                             @foreach($categories as $category)
-                            <span class="exhibit-detail__item-category">{{ $category->name}}</span>
+                            <input type="checkbox" name="categories[]" value="{{$loop->iteration}}" id="{{$loop->iteration}}">
+                            <label for="{{$loop->iteration}}" class="exhibit-detail__item-category">{{ $category->name}}</label>
                             @endforeach
                         </div>
                         <p class="exhibit-detail__item-condition-title">商品の状態</p>
@@ -108,11 +109,11 @@
                     </div>
 
                     <div class="exhibit-form__group">
-                        <label class="exhibit-form__label" for="zipcode">
+                        <label class="exhibit-form__label" for="brand">
                             ブランド名
                         </label>
                         <div class="exhibit-form__inputs">
-                            <input class="exhibit-form__input" type="zipcode" name="zipcode" id="zipcode">
+                            <input class="exhibit-form__input" type="zipcode" name="brand" id="brand">
                         </div>
                         <p class="exhibit-form__error-message">
                             @error('zipcode')
@@ -122,10 +123,10 @@
                     </div>
 
                     <div class="exhibit-form__group">
-                        <label class="exhibit-form__label" for="address">
+                        <label class="exhibit-form__label" for="description">
                             商品の説明
                         </label>
-                        <input class="exhibit-form__input-textarea" type="textarea" name="address" id="address">
+                        <input class="exhibit-form__input-textarea" type="textarea" name="description" id="description">
                         <p class="exhibit-form__error-message">
                             @error('address')
                             {{ $message }}
@@ -134,10 +135,10 @@
                     </div>
 
                     <div class="exhibit-form__group">
-                        <label class="exhibit-form__label" for="building">
+                        <label class="exhibit-form__label" for="price">
                             価格
                         </label>
-                        <input class="exhibit-form__input" type="text" name="building" id="building">
+                        <input class="exhibit-form__input-price" type="number" name="price" id="price">
                     </div>
 
                 </div>

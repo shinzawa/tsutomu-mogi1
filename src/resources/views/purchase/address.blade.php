@@ -34,7 +34,7 @@
 <div class="address-form">
     <h2 class="address-form__heading content__heading">住所の変更</h2>
     <div class="address-form__inner">
-        <form action="/purchase/address" method="post" enctype="multipart/form-data">
+        <form action="/purchase/address/{{ $item_id }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="address-form__group">
                 <label class="address-form__label" for="zipcode">

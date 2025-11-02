@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Requests;
-use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FortifyLoginRequest
+class CommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,15 @@ class LoginRequest extends FortifyLoginRequest
     public function rules()
     {
         return [
-            'email' => 'required | email',
-            'password' => 'required',
+            'comment' => 'required | max:255',
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'ログイン情報が登録されていません',
-            'password.required' => 'パスワードを入力してください',
+            'comment.required' => 'コメントを入力してください',
+            'comment.max' => 'コメントは255文字以内で入力してください',
         ];
     }
 }
