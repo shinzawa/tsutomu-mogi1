@@ -32,10 +32,10 @@ class ItemController extends Controller
         } else {
             $ismylist = false;
             if (Auth::check()) {
+                $items = [];
                 foreach ($itemsAll as $item) {
-                    $id = Auth::id();
                     $exhibitUsers = $item->exhibitUsers()->get();
-                    $ar[] = 0;
+                    $ar = [];
                     if (count($exhibitUsers) > 0) foreach ($exhibitUsers as $eUser) {
                         $ar[] = $eUser->id;
                     }
