@@ -144,7 +144,11 @@
                                     {{ $message }}
                                     @enderror
                                 </p>
+                                @if (Auth::check())
                                 <button class="item__comments-btn">
+                                @else
+                                <button class="item__comments-btn" disabled>
+                                @endif
                                     <div>
                                         コメントを送信する
                                     </div>
