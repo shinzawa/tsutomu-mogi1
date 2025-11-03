@@ -63,7 +63,8 @@ class ItemController extends Controller
             $profile = $user->profile()->get();
             $profiles[] = $profile[0];
         }
-        $id = Auth::id();
+
+	$id = Auth::id();
 
         $nices = $item->nices()->get();
         if (!empty($nices)) {
@@ -84,6 +85,15 @@ class ItemController extends Controller
         $item = Item::find($item_id);
         $categories = $item->categories()->get();
         $comments = $item->comments()->get();
+        $comments = $item->comments()->get();
+        $users = [];
+        $profiles=[];
+        foreach($comments as $comment) {
+            $user = User::find($comment->pivot->user_id);
+            $users[] = $user;
+            $profile = $user->profile()->get();
+            $profiles[] = $profile[0];
+        }
 
         $id = Auth::id();
 
@@ -113,7 +123,7 @@ class ItemController extends Controller
             $isnice = false;
         }
 
-        return view('/item', compact('item', 'categories', 'comments', 'nices', 'isnice'));
+        return view('item', compact('item', 'categories', 'comments', 'users', 'profiles','nices', 'isnice'));
     }
 
     public function purchase($item_id)
