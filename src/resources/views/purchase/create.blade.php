@@ -32,7 +32,7 @@
 @endsection
 
 @section('content')
-<form action="/purchase/{$item_id}" class="purchase-form" method="post" novalidation>
+<form action="/purchase/{{$item_id}}" class="purchase-form" method="post" novalidation>
     @csrf
     <div class="purchase-all">
         <div class="purchase-left-area">
