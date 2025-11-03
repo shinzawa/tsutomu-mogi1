@@ -58,7 +58,7 @@ class ItemController extends Controller
         $users = [];
         $profiles=[];
         foreach($comments as $comment) {
-            $user = User::find($comment->user_id);
+            $user = User::find($comment->pivot->user_id);
             $users[] = $user;
             $profile = $user->profile()->get();
             $profiles[] = $profile[0];

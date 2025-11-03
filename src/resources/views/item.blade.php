@@ -119,7 +119,7 @@
                             <!-- $comment->user_id からuser,user->profile,profile->image and user->name 取得-->
                             <div class="item_comments-image">
                                 <div>
-                                    <image src="{{ asset(  'storage/' . $profiles[$idx]->image )}}" width="150px" height="150px" style="object-fit:cover;display:none;border-radius:50%;" alt="{{ request('image')}}" id="preview"></image>
+                                    <image src="{{ asset(  'storage/' . $profiles[$idx]->image )}}" width="150px" height="150px" style="object-fit:cover;border-radius:50%;" alt="{{ request('image')}}" id="preview"></image>
                                 </div>
                             </div>
                             <div class="item_comments-name">
