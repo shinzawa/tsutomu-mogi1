@@ -60,8 +60,8 @@ class ItemController extends Controller
         foreach($comments as $comment) {
             $user = User::find($comment->user_id);
             $users[] = $user;
-            $profile = $user->profile;
-            $profiles[] = $profile;
+            $profile = $user->profile()->get();
+            $profiles[] = $profile[0];
         }
         $id = Auth::id();
 
