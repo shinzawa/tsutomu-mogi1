@@ -23,7 +23,6 @@ class PurchaseController extends Controller
 
     public function store(Request $request, $item_id)
     {
-        dd($request);
         $id = Auth::id();
         $zipcode = $request->input('zipcode');
         $address = $request->input('address');
