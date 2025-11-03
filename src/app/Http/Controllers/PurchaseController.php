@@ -18,7 +18,7 @@ class PurchaseController extends Controller
         $profiles = $user->profile()->get();
         $profile = $profiles[0];
 
-        return view('/purchase/create', compact('purchase', 'profile'));
+        return view('/purchase/create', compact('purchase', 'profile', 'item_id'));
     }
 
     public function store(Request $request, $item_id)

@@ -11,11 +11,13 @@ class CommentController extends Controller
 {
     public function store(CommentRequest $request, $item_id)
     {
-        $item = Item::find($item_id);
-        $id = Auth::id();
-        $comment = $request->comment;
-        $item->comments()->attach($id, ['comment' => $comment]);
+        if (Auth::check()) {
+            $item = Item::find($item_id);
+            $id = Auth::id();
+            $comment = $request->comment;
+            $item->comments()->attach($id, ['comment' => $comment]);
+        }
 
-        return redirect()->back();
+        return back();
     }
 }

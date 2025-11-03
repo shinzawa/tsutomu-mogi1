@@ -30,6 +30,6 @@ class   AddressController extends Controller
         $profiles = $user->profile()->get();
         $profile = $profiles[0];
 
-        return view('/purchase/create', compact('purchase', 'profile', 'newaddress'));
+        return view('/purchase/create', compact('purchase', 'profile', 'newaddress','item_id'));
     }
 }
