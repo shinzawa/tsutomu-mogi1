@@ -32,9 +32,9 @@
 @endsection
 
 @section('content')
-<div class="purchase-all">
-    <form action="/purchase/{$item_id}" class="purchase-form" method="post" novalidation>
-        @csrf
+<form action="/purchase/{$item_id}" class="purchase-form" method="post" novalidation>
+    @csrf
+    <div class="purchase-all">
         <div class="purchase-left-area">
             <div class="product-detail">
                 <div class="product__image-area">
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</form>
 <script src="{{ asset('/js/purchase.js') }}"></script>
 @endsection
