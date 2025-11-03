@@ -28,7 +28,7 @@ class Item extends Model
 
     public function buyUsers()
     {
-        return $this->belongsToMany(User::class, 'user_buy_items', 'item_id', 'user_id');
+        return $this->belongsToMany(User::class)->withPivot('zipcode','address','building');
     }
 
     public function exhibitUsers()
