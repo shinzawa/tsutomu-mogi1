@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/create',  [ProfileController::class, 'show']);
     Route::post('/profile/create', [ProfileController::class, 'create']);
     Route::get('/profile/edit',  [ProfileController::class, 'edit']);
-    Route::post('/profile/eidt', [ProfileController::class, 'update']);
+    Route::post('/profile/edit', [ProfileController::class, 'update']);
     Route::get('/exhibit', [MypageItemController::class, 'show']);
     Route::post('/exhibit', [MypageItemController::class, 'store']);
     Route::get('/mypage', [MypageItemController::class, 'mypage']);

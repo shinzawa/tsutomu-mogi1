@@ -55,7 +55,14 @@ class ItemController extends Controller
         $item = Item::find($item_id);
         $categories = $item->categories()->get();
         $comments = $item->comments()->get();
-
+        $users = [];
+        $profiles=[];
+        foreach($comments as $comment) {
+            $user = User::find($comment->user_id);
+            $users[] = $user;
+            $profile = $user->profile;
+            $profiles[] = $profile;
+        }
         $id = Auth::id();
 
         $nices = $item->nices()->get();
@@ -69,7 +76,7 @@ class ItemController extends Controller
             $isnice = false;
         }
 
-        return view('item', compact('item', 'categories', 'comments', 'nices', 'isnice'));
+        return view('item', compact('item', 'categories', 'comments', 'users', 'profiles','nices', 'isnice'));
     }
 
     public function change($item_id)

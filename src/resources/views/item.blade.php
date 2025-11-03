@@ -115,8 +115,18 @@
                     <div class="item__comments">
                         <div class="item__comments-title">{{ 'コメント(' .  count($comments) .')'}}</div>
                         <div class="item__comments-list">
-                            @foreach($comments as $comment)
+                            @foreach($comments as $idx => $comment)
                             <!-- $comment->user_id からuser,user->profile,profile->image and user->name 取得-->
+                            <div class="item_comments-image">
+                                <div>
+                                    <image src="{{ asset(  'storage/' . $profiles[$idx]->image )}}" width="150px" height="150px" style="object-fit:cover;display:none;border-radius:50%;" alt="{{ request('image')}}" id="preview"></image>
+                                </div>
+                            </div>
+                            <div class="item_comments-name">
+                                <p class="profile__name">
+                                    {{$profiles[$idx]->name }}
+                                </p>
+                            </div>
                             <div class="item__comments-content">
                                 @if (!empty($comment))
                                 {{ $comment->pivot->comment }}
