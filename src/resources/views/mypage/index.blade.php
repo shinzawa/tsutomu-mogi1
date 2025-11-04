@@ -54,13 +54,15 @@
 
 <div class="index__list">
     <div class="index__tab">
-        <form action="/mypage?page=sell" method="get">
+        <form action="/mypage" method="get">
             <div class="index__tab-item">
+                <input type="hidden" name="page" value="sell">
                 <input type="submit" value="出品した商品" class="index__tab-item" style={{ $isSellPage ? 'color:#FF0000;' : 'color:#5F5F5F;' }}>
             </div>
         </form>
-        <form action="/mylist?page=buy" method="get">
+        <form action="/mylist" method="get">
             <div class="index__tab-item">
+                <input type="hidden" name="page" value="buy">
                 <input type="submit" value=" 購入した商品" class="index__tab-item" style={{ $isSellPage ? 'color:#5F5F5F;' : 'color:#FF0000;' }}>
             </div>
         </form>
