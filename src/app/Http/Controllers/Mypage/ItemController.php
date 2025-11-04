@@ -11,7 +11,7 @@ use App\Models\Category;
 
 class ItemController extends Controller
 {
-    public function mypage()
+    public function index(Request $request)
     {
         $id = Auth::id();
         $user = User::find($id);
@@ -21,7 +21,14 @@ class ItemController extends Controller
         $buyItems = $user->buyItems()->get();
         $exhibitItems = $user->exhibitItems()->get();
 
-        return view('/mypage/index', compact('profile', 'buyItems', 'exhibitItems'));
+        $page = $request->query('page', 'sell');
+        if ($page == 'sell') {
+            $isSellPage = true;
+        } elseif ($page == 'buy') {
+            $isSellPage = false;
+        }
+
+        return view('/mypage/index', compact('profile', 'buyItems', 'exhibitItems', 'isSellPage'));
     }
 
     public function show() {

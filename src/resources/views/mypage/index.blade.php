@@ -54,32 +54,23 @@
 
 <div class="index__list">
     <div class="index__tab">
-        @php
-        $isbuy=1;
-        @endphp
-        @if ($isbuy)
-        <div class="index__tab-item" styel="color:#5F5F5F;">
-            出品した商品
+        <form action="/mypage?page=sell" method="get">
+            <div class="index__tab-item">
+                <input type="submit" value="出品した商品" class="index__tab-item" style={{ $isSellPage ? 'color:#FF0000;' : 'color:#5F5F5F;' }}>
+            </div>
+        </form>
+        <form action="/mylist?page=buy" method="get"></form>
+        <div class="index__tab-item">
+            <input type="submit" value=" 購入した商品" class="index__tab-item" style={{ $isSellPage ? 'color:#5F5F5F;' : 'color:#FF0000;' }}>
         </div>
-        <div class="index__tab-item" style="color:#FF0000;">
-            購入した商品
-        </div>
-        @else
-        <div class="index__tab-item" style="color:#FF0000;">
-            出品した商品
-        </div>
-        <div class="index__tab-item" styel="color:#5F5F5F;">
-            購入した商品
-        </div>
-        @endif
     </div>
 </div>
 <hr color="#5F5F5F" size="2px" width="1510px">
 <div class="index__content">
     <div class="index-main">
         <div class="index-card__frame">
-            @if($isbuy)
-            @foreach($buyItems as $item)
+            @if($isSellPage)
+            @foreach($exhibitItems as $item)
             <div class="index-card__list">
                 <a href="/items/{{ $item->id}}" class="item-card">
                     <div class="index-card__item">
@@ -95,7 +86,7 @@
             </div>
             @endforeach
             @else
-            @foreach($exhibitItems as $item)
+            @foreach($buyItems as $item)
             <div class="index-card__list">
                 <a href="/items/{{ $item->id}}" class="item-card">
                     <div class="index-card__item">

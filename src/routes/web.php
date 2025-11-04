@@ -27,7 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/edit', [ProfileController::class, 'update']);
     Route::get('/exhibit', [MypageItemController::class, 'show']);
     Route::post('/exhibit', [MypageItemController::class, 'store']);
-    Route::get('/mypage', [MypageItemController::class, 'mypage']);
+
+    Route::get('/mypage', [MypageItemController::class, 'index']);
+
     Route::get('/mypage/profile',  [ProfileController::class, 'edit']);
     Route::post('/mypage/profile', [ProfileController::class, 'update']);
     Route::get('/purchase/address/{item_id}', [AddressController::class, 'show']);
