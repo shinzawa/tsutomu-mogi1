@@ -9,6 +9,8 @@ use App\Models\User;
 
 class PurchaseController extends Controller
 {
+    public $purchaseMethod;
+
     public function show($item_id)
     {
         $purchase = Item::find($item_id);
@@ -18,7 +20,8 @@ class PurchaseController extends Controller
         $profiles = $user->profile()->get();
         $profile = $profiles[0];
 
-        return view('/purchase/create', compact('purchase', 'profile', 'item_id'));
+        $purchaseMethod = null;
+        return view('/purchase/create', compact('purchase', 'profile', 'item_id', 'purchaseMethod'));
     }
 
     public function store(Request $request, $item_id)

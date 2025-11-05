@@ -34,7 +34,7 @@
 <div class="address-form">
     <h2 class="address-form__heading content__heading">住所の変更</h2>
     <div class="address-form__inner">
-        <form action="/purchase/address/{{ $item_id }}" method="post" enctype="multipart/form-data">
+        <form action="/purchase/address/{{ $item_id }}" method="post" novalidation>
             @csrf
             <div class="address-form__group">
                 <label class="address-form__label" for="zipcode">
@@ -66,6 +66,7 @@
                 <label class="address-form__label" for="building">建物名</label>
                 <input class="address-form__input" type="text" name="building" id="building">
             </div>
+            <input type="hidden" name='purchaseMethod' value="{{ $purchaseMethod['purchaseMethod'] }}" >
             <input class="address-form__btn btn" type="submit" value="更新する">
         </form>
     </div>

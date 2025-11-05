@@ -10,9 +10,11 @@ use App\Models\User;
 
 class   AddressController extends Controller
 {
-    public function show($item_id)
+    public function show(Request $request, $item_id)
     {
-        return view('/purchase/address', compact('item_id'));
+        $purchaseMethod = $request->only(['purchaseMethod']);
+                
+        return view('/purchase/address', compact('item_id', 'purchaseMethod'));
     }
 
     public function update(Request $request, $item_id)
@@ -30,6 +32,8 @@ class   AddressController extends Controller
         $profiles = $user->profile()->get();
         $profile = $profiles[0];
 
-        return view('/purchase/create', compact('purchase', 'profile', 'newaddress','item_id'));
+        $purchaseMethod = $request->only(['purchaseMethod']);
+
+        return view('/purchase/create', compact('purchase', 'profile', 'newaddress', 'item_id', 'purchaseMethod'));
     }
 }

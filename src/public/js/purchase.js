@@ -1,5 +1,6 @@
 // HTML要素を取得する
 const mySelect = document.getElementById('purchase-method-select');
+const myHidden = document.getElementById('purchaseMethod');
 const displayArea = document.getElementById('display-purchase-method');
 
 
@@ -10,5 +11,5 @@ mySelect.addEventListener('change', (event) => {
 
   // spanタグに表示する場合
   displayArea.textContent = selectedValue;
-
+  myHidden.value = selectedValue;
 });

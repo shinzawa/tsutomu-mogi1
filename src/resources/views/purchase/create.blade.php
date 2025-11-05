@@ -57,11 +57,19 @@
                     </div>
                     <div class="purchase-method-card-select">
                         <div class="purchase-method-select">
+                            @if ( $purchaseMethod['purchaseMethod'] != null)
+                            <select name="purchase-method" id="purchase-method-select">
+                                <option disable @if( $purchaseMethod['purchaseMethod']=='' ) selected @endif value=""> &nbsp;&nbsp;選択して下さい</option>
+                                <option value="コンビニ払い" @if( $purchaseMethod['purchaseMethod']=='コンビニ払い' ) selected @endif>コンビニ払い</option>
+                                <option value="カード支払い" @if( $purchaseMethod['purchaseMethod']=='カード支払い' ) selected @endif>カード支払い</option>
+                            </select>
+                            @else
                             <select name="purchase-method" id="purchase-method-select">
                                 <option disable selected value=""> &nbsp;&nbsp;選択して下さい</option>
                                 <option value="コンビニ払い">コンビニ払い</option>
                                 <option value="カード支払い">カード支払い</option>
                             </select>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -136,9 +144,10 @@
             </form>
         </div>
         <div class="purchase-lower-up-right">
-            <a href="/purchase/address/{{ $purchase->id }}">
+            <form action="/purchase/address/{{ $purchase->id }}" method="get" novalidation>
+                <input type="hidden" name="purchaseMethod" id="purchaseMethod"></input>
                 <button class="purchase-address-change-btn">変更する</button>
-            </a>
+            </form>
         </div>
     </div>
     <hr class="purchase-action__title" size="1px" width="805px" color="#000000">
