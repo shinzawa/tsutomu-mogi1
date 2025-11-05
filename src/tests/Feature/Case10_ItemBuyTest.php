@@ -67,7 +67,7 @@ class Case10_ItemBuyTest extends TestCase
 
         $this->get('/items/index');
         $response->assertStatus(200);
-        $response->assertSeeInOrder(['ノートPC','Sold','マイク']);
+        $response->assertSeeInOrder(['ノートPC', 'Sold', 'マイク']);
         DB::table('user_buy_items')->where('user_id', '1')->where('item_id', '5')->delete();
     }
 
@@ -94,5 +94,14 @@ class Case10_ItemBuyTest extends TestCase
         $response = $this->post('/purchase/5', $purchaseData);
         $response->assertStatus(200);
 
+        $response = $this->get('/mypage');
+        $response->assertStatus(200);
+
+        $response = $this->get('/mypage?page=buy');
+        $response->assertStatus(200);
+
+        
+        $response->assertSeeText('ノートPC');
+        DB::table('user_buy_items')->where('user_id', '1')->where('item_id', '5')->delete();
     }
 }

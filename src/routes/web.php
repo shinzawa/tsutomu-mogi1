@@ -32,10 +32,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/mypage/profile',  [ProfileController::class, 'edit']);
     Route::post('/mypage/profile', [ProfileController::class, 'update']);
-    Route::get('/purchase/address/{item_id}', [AddressController::class, 'show']);
-    Route::post('/purchase/address/{item_id} ', [AddressController::class, 'update']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'show']);
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
+    Route::get('/purchase/address/{item_id}', [AddressController::class, 'show']);
+    Route::post('/purchase/address/{item_id} ', [AddressController::class, 'update']);
     Route::post('/comment/{item_id}', [CommentController::class, 'store']);
 });
 

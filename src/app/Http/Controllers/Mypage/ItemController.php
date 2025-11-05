@@ -53,12 +53,15 @@ class ItemController extends Controller
         ]);
         $data = array_merge($data, ['image' => $path]);
         $item = Item::create($data);
+        // categories
         $categories = $request->categories;
         foreach ($categories as $category_id) {
             $ca[] = $category_id;
         }
         $item->categories()->attach($ca);
-        
+        // exhibit
+        $id = Auth::id();
+        $item->exhibitUsers()->attach($id);
         
         return view('/items/index');
     }

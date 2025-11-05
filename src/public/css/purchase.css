@@ -5,14 +5,16 @@
 
 .purchase-all {
     width: 1512px;
+    height: auto;
     display: flex;
     justify-content: space-between;
 }
 
 .purchase-left-area {
     width: 805px;
-    height: 624px;
-    margin: 95px 80px;
+    /* height: 624px; */
+    height: auto;
+    margin: 95px 51px 0px 80px;
 }
 
 .product-detail {
@@ -138,15 +140,38 @@
   pointer-events: none;
 }
 
+.purchase-lower {
+    width: 805px;
+    margin: 1px 51px 20px 80px;
+}
+
+.purchase-lower-up {
+    width: 805px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase-lower-up-right {
+    width: 100px;
+    height: 100px;
+    margin: 35px 40px 1px 40px;
+
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    vertical-align: middle;
+    color:#0073CC
+}
+
 .purchase-address {
-    width: 326px;
+    width: 500px;
     height: 190px;
-    margin: 34px 35px;
 }
 
 .purchase-address-card-title {
-    width: 755px;
-    height: 85px;
+    width: 500px;
+    height: 60px;
     display: flex;
     justify-content:space-between;
     align-items: middle;
@@ -175,29 +200,32 @@
 
     color: #0073CC;
 }
-
-.purchase-address-card {
-    width: 376px;
-    height: 85px;
-    margin: 0 auto 11px auto;
+.purchase-address__card {
+    width: 500px;
+    height: 190px;
+    margin: 35px 35px 1px 35px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .purchase-address-card div{
+    width: 400px;
     font-family: Inter;
     font-weight: 600;
     font-style: Semi Bold;
     font-size: 20px;
     line-height: 100%;
     vertical-align: middle;
+    text-align:left;
     color: #000000;
+    margin-left: 50px;
 }
 
 .purchase-right-area {
     width: 440px;
-    height: 600px;
-    margin: 95px auto;
+    /* height: 600px; */
+    height: auto;
+    margin: 95px 62px 95px 51px;
 }
 
 .purchase-card-confirm {
