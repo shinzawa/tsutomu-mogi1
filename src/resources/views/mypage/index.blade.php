@@ -68,7 +68,7 @@
         </form>
     </div>
 </div>
-<hr color="#5F5F5F" size="2px" width="1510px">
+<hr color="#5F5F5F" size="2px" width="100%">
 <div class="index__content">
     <div class="index-main">
         <div class="index-card__frame">

@@ -50,30 +50,37 @@
                         </div>
                     </div>
                 </div>
-                <hr class="product-detail__title" size="1px" width="805px" color="#000000">
+                <hr class="product-detail__title" size="1px" width="100%" color="#000000">
                 <div class="purchase-method">
                     <div class="purchase-method-card-title">
                         <p class="purchase-method-title">支払方法</p>
                     </div>
                     <div class="purchase-method-card-select">
-                        <div class="purchase-method-select">
-                            @if ( $purchaseMethod['purchaseMethod'] != null)
-                            <select name="purchase-method" id="purchase-method-select">
-                                <option disable @if( $purchaseMethod['purchaseMethod']=='' ) selected @endif value=""> &nbsp;&nbsp;選択して下さい</option>
-                                <option value="コンビニ払い" @if( $purchaseMethod['purchaseMethod']=='コンビニ払い' ) selected @endif>コンビニ払い</option>
-                                <option value="カード支払い" @if( $purchaseMethod['purchaseMethod']=='カード支払い' ) selected @endif>カード支払い</option>
-                            </select>
-                            @else
-                            <select name="purchase-method" id="purchase-method-select">
-                                <option disable selected value=""> &nbsp;&nbsp;選択して下さい</option>
-                                <option value="コンビニ払い">コンビニ払い</option>
-                                <option value="カード支払い">カード支払い</option>
-                            </select>
-                            @endif
+                        <div>
+                            <div class="purchase-method-select">
+                                @if ( $purchaseMethod['purchaseMethod'] != null)
+                                <select name="purchase-method" id="purchase-method-select">
+                                    <option disable @if( $purchaseMethod['purchaseMethod']=='' ) selected @endif value=""> &nbsp;&nbsp;選択して下さい</option>
+                                    <option value="コンビニ払い" @if( $purchaseMethod['purchaseMethod']=='コンビニ払い' ) selected @endif>コンビニ払い</option>
+                                    <option value="カード支払い" @if( $purchaseMethod['purchaseMethod']=='カード支払い' ) selected @endif>カード支払い</option>
+                                </select>
+                                @else
+                                <select name="purchase-method" id="purchase-method-select">
+                                    <option disable selected value=""> &nbsp;&nbsp;選択して下さい</option>
+                                    <option value="コンビニ払い">コンビニ払い</option>
+                                    <option value="カード支払い">カード支払い</option>
+                                </select>
+                                @endif
+                            </div>
+                            <div class="form__error">
+                                @error('purchase-method')
+                                {{ $message }}
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
-                <hr class="purchase-action__title" size="1px" width="805px" color="#000000">
+                <hr class="purchase-action__title" size="1px" width="100%" color="#000000">
             </div>
             <div class="purchase-right-area">
                 <div class="purchase-card-confirm">
@@ -150,7 +157,7 @@
             </form>
         </div>
     </div>
-    <hr class="purchase-action__title" size="1px" width="805px" color="#000000">
+    <hr class="purchase-action__title" size="1px" width="100%" color="#000000">
 </div>
 
 <script src="{{ asset('/js/purchase.js') }}"></script>

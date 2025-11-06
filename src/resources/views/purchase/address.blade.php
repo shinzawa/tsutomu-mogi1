@@ -41,7 +41,7 @@
                     郵便番号
                 </label>
                 <div class="address-form__zipcode-inputs">
-                    <input class="address-form__input address-form__zipcode-input" type="zipcode" name="zipcode" id="zipcode">
+                    <input class="address-form__input address-form__zipcode-input" type="zipcode" name="zipcode" id="zipcode" value="{{old('zipcode')}}">
                 </div>
                 <p class="address-form__error-message">
                     @error('zipcode')
@@ -54,7 +54,7 @@
                 <label class="address-form__label" for="address">
                     住所
                 </label>
-                <input class="address-form__input" type="text" name="address" id="address">
+                <input class="address-form__input" type="text" name="address" id="address" value="{{old('address')}}">
                 <p class="address-form__error-message">
                     @error('address')
                     {{ $message }}
@@ -64,9 +64,13 @@
 
             <div class="address-form__group">
                 <label class="address-form__label" for="building">建物名</label>
-                <input class="address-form__input" type="text" name="building" id="building">
+                <input class="address-form__input" type="text" name="building" id="building" value="{{old('building')}}">
             </div>
-            <input type="hidden" name='purchaseMethod' value="{{ $purchaseMethod['purchaseMethod'] }}" >
+            @if (!empty($puchaseMethod))
+            <input type="hidden" name='purchaseMethod' value="{{ $purchaseMethod['purchaseMethod'] }}">
+            @else
+            <input type="hidden" name='purchaseMethod' value="">
+            @endif
             <input class="address-form__btn btn" type="submit" value="更新する">
         </form>
     </div>

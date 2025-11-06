@@ -36,7 +36,7 @@
     <div class="product-detail">
         <div class="product__image-area">
             <div class="product__image-card">
-                <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="600px" height="600px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
+                <input type="image" src="{{ asset(  'storage/' . $item->image )}}" alt="{{ $item->image}}"></input>
             </div>
         </div>
         <div class="product__description-area">
@@ -146,13 +146,13 @@
                                 </p>
                                 @if (Auth::check())
                                 <button class="item__comments-btn">
-                                @else
-                                <button class="item__comments-btn" disabled>
-                                @endif
-                                    <div>
-                                        コメントを送信する
-                                    </div>
-                                </button>
+                                    @else
+                                    <button class="item__comments-btn" disabled>
+                                        @endif
+                                        <div>
+                                            コメントを送信する
+                                        </div>
+                                    </button>
                             </form>
                         </div>
                     </div>

@@ -16,7 +16,9 @@
 <body>
     <div class="app">
         <header class="header">
-            <div class="header__heading"></div>
+            <a href="/">
+                <div class="header__heading"></div>
+            </a>
             @yield('link')
         </header>
         @yield('content')

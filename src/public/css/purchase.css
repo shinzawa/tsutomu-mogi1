@@ -1,24 +1,184 @@
-@media screen and (max-width: 1500px) {}
+@media screen and (max-width: 1400px) {
+    .header__heading {
+    width:380px;
+    background-size:90%;
+}
+
+.header-form__search {
+    width: 500px;
+    font-size:24px;
+}
+
+.header__link {
+    width:480px;
+}
+
+.header-form__link {
+    width:100px;
+    font-size:24px;
+}
+
+.header__link-mypage {
+    width: 135px;
+    font-size:24px;
+}
+
+.header__link-sell {
+    font-size:24px;
+}
+
+.purchase-card__title {
+    font-size: 45px;
+}
+
+.purchase-card__title-method {
+        font-size: 30px;
+}
+
+.purchase-card__title-price span {
+    font-size: 27px;
+}
+.item__purchase-btn {
+    font-size: 26px;
+}
+
+.purchase-method-title,
+.purchase-address-title,
+.purchase-price-title ,
+.purchase-price-card-title-price ,
+.purchase-method__card-title2,
+.purchase-method__card-title-method {
+    font-size: 24px;
+}
+
+.purchase-lower-up-right,
+.purchase-address-change-btn,
+.purchase-address-card div ,
+.purchase-price-card-title-price span {
+    font-size: 20px;
+}
+
+.purchase-left-area {
+    width: 50%;
+    height: auto;
+    margin: 95px 51px 0px 80px;
+}
+
+.purchase-right-area {
+    width: 442px;
+    height: auto;
+    margin: 95px 62px 95px 51px;
+}
+
+.purchase-lower {
+    width: 700px;
+    margin: 1px 51px 20px 80px;
+}
+
+.purchase-lower-up {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+}
+}
 
 
-@media screen and (max-width: 1100px) {}
+@media screen and (max-width: 800px) {
+
+.header-form__search {
+    width: 200px;
+    font-size:16px;
+}
+
+.header__heading {
+    width:240px;
+    background-size:90%;
+}
+
+.header__link {
+    width: 300px;
+}
+.header-form__link {
+    width:80px;
+    font-size:16px;
+}
+
+.header__link-sell {
+    font-size: 18px;
+}
+
+.header__link-mypage {
+    font-size:16px;
+}
+
+.purchase-card__title {
+    font-size: 22px;
+}
+
+.purchase-card__title-method {
+        font-size: 15px;
+}
+
+.purchase-card__title-price span {
+    font-size: 13px;
+}
+.item__purchase-btn {
+    font-size: 13px;
+}
+
+.purchase-method-title,
+.purchase-address-title,
+.purchase-price-title ,
+.purchase-price-card-title-price ,
+.purchase-method__card-title2,
+.purchase-method__card-title-method {
+    font-size: 12px;
+}
+
+.purchase-lower-up-right,
+.purchase-address-change-btn,
+.purchase-address-card div ,
+.purchase-price-card-title-price span {
+    font-size: 10px;
+}
+
+.purchase-left-area {
+    width: 50%;
+    height: auto;
+    margin: 95px 25px 0px 40px;
+}
+
+.purchase-right-area {
+    width: 238px;
+    height: auto;
+    margin: 95px 31px 95px 25px;
+}
+
+.purchase-lower {
+    width: 374px;
+    margin: 1px 25px 20px 40px;
+}
+
+.purchase-lower-up {
+    width: 374px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.purchase-lower-up-left {
+    width: 50%;
+}
+}
 
 .purchase-all {
-    width: 1512px;
     height: auto;
     display: flex;
     justify-content: space-between;
 }
 
-.purchase-left-area {
-    width: 805px;
-    /* height: 624px; */
-    height: auto;
-    margin: 95px 51px 0px 80px;
-}
 
 .product-detail {
-    width: 805px;
+    width: 100%;
     height: 220px;
     display: flex;
 
@@ -42,12 +202,12 @@
 .product__description-card {
     display: flex;
     justify-content: flex-start;
-    width: 570px;
+    width: 200px;
     height: 200px;
 }
 
 .product__description-card-title {
-    width: 570px;
+
     height: 200px;
 }
 
@@ -55,7 +215,6 @@
     display: block;
     color: #000000;
     font-family: Inter;
-    font-size: 45px;
     line-height: 100%;
 }
 
@@ -66,17 +225,14 @@
     margin-bottom: 20px;
 }
 
+
 .purchase-card__title-method {
-    font-size: 30px;
     font-weight: 400;
     line-height: 100%;
     vertical-align: middle;
     margin-bottom: 26px;
 }
 
-.purchase-card__title-price span {
-    font-size: 27px;
-}
 
 .purchase-method {
     width: 326px;
@@ -93,11 +249,11 @@
 .purchase-method-title {
     font-family: Inter;
     font-weight: 700;
-    font-size: 24px;
     line-height: 100%;
     color: #000000;
 
 }
+
 .purchase-method-card-select {
     width: 326px;
     height: 85px;
@@ -133,23 +289,13 @@
   font-size: 10px;
   color: #5F5F5F;
   position: absolute;
-  top: 15%;
+  top: 35%;
   right: 12px;
   transform: translateY(-50%);
   /* 矢印部分がクリックできないようにする */
   pointer-events: none;
 }
 
-.purchase-lower {
-    width: 805px;
-    margin: 1px 51px 20px 80px;
-}
-
-.purchase-lower-up {
-    width: 805px;
-    display: flex;
-    justify-content: space-between;
-}
 
 .purchase-lower-up-right {
     width: 100px;
@@ -158,19 +304,18 @@
 
     font-family: Inter;
     font-weight: 400;
-    font-size: 20px;
     line-height: 100%;
     vertical-align: middle;
     color:#0073CC
 }
 
 .purchase-address {
-    width: 500px;
+    width: 35%;
     height: 190px;
 }
 
 .purchase-address-card-title {
-    width: 500px;
+    width: 100%;
     height: 60px;
     display: flex;
     justify-content:space-between;
@@ -179,10 +324,10 @@
     margin: 0 auto 11px auto;
 }
 
+
 .purchase-address-title {
     font-family: Inter;
     font-weight: 700;
-    font-size: 24px;
     line-height: 100%;
     color: #000000;
     text-align:center;
@@ -195,13 +340,12 @@
     font-family: Inter;
     font-weight: 400;
     font-style: Regular;
-    font-size: 20px;
     line-height: 100%;
 
     color: #0073CC;
 }
 .purchase-address__card {
-    width: 500px;
+    width: 100%;
     height: 190px;
     margin: 35px 35px 1px 35px;
     display: flex;
@@ -213,7 +357,6 @@
     font-family: Inter;
     font-weight: 600;
     font-style: Semi Bold;
-    font-size: 20px;
     line-height: 100%;
     vertical-align: middle;
     text-align:left;
@@ -221,20 +364,15 @@
     margin-left: 50px;
 }
 
-.purchase-right-area {
-    width: 440px;
-    /* height: 600px; */
-    height: auto;
-    margin: 95px 62px 95px 51px;
-}
+
 
 .purchase-card-confirm {
-    width: 440px;
+    width: 100%;
 
 }
 
 .purchase-price-card {
-    width: 440px;
+    width: 100%;
     height: 115px;
     border: 1px solid #000000;
     display: flex;
@@ -254,24 +392,19 @@
     height: 24px;
     font-family: Inter;
     font-weight: 700;
-    font-size: 24px;
     line-height: 100%;
     color: #000000;
 }
 
 .purchase-price-card-title-price {
-    font-size: 24px;
-    font-weight: 400;
+     font-weight: 400;
     line-height: 100%;
     vertical-align: middle;
 }
 
-.purchase-price-card-title-price span{
-    font-size: 20px;
-}
 
 .purchase-method__card {
-    width: 440px;
+    width: 100%;
     height: 115px;
     border-left: 1px solid #000000; 
     border-right: 1px solid #000000; 
@@ -294,30 +427,27 @@
     height: 24px;
     font-family: Inter;
     font-weight: 700;
-    font-size: 24px;
     line-height: 100%;
     color: #000000;
 }
 
 .purchase-method__card-title-method {
-    font-size: 24px;
     font-weight: 400;
     line-height: 100%;
     vertical-align: middle;
 }
 
 .item__purchase-area {
-    width: 440px;
+    width: 100%;
     height: 60px;
 }
 
 .item__purchase-btn {
-    width: 440px;
+    width: 100%;
     height: 60px;
     font-family: Inter;
     font-weight: 700;
     font-style: Bold;
-    font-size: 26px;
     line-height: 100%;
     text-align: center;
     vertical-align: middle;
@@ -325,4 +455,8 @@
     color: #FFFFFF;
     border-radius: 5px;
     margin-top: 65px;
+}
+
+.form__error {
+    color: #FF0000;
 }

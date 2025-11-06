@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\User;
+use App\Http\Requests\AddressRequest;
 
 
 class   AddressController extends Controller
@@ -17,7 +18,7 @@ class   AddressController extends Controller
         return view('/purchase/address', compact('item_id', 'purchaseMethod'));
     }
 
-    public function update(Request $request, $item_id)
+    public function update(AddressRequest $request, $item_id)
     {
         $newaddress = $request->only([
             'zipcode',

@@ -25,7 +25,7 @@ input::placeholder {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1512px;
+  
     padding: 22px 0 24px 0;
     height: 82px;
     border: 1px solid #E0DFDE;
@@ -35,15 +35,16 @@ input::placeholder {
 }
 
 .header__heading {
-    width: 370px;
+    width: 240px;
     height: 36px;
     background-image: url('../logo.png');
+
     background-position: 25px 0;
     padding-left: 25px;
 }
 
 .header__search {
-    width: 565px;
+    width: 20%;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -55,14 +56,13 @@ input::placeholder {
 }
 
 .header-form__search {
-    width: 500px;
+    box-sizing: border-box;
     height: 50px;
     border-radius: 5px;
     background-color: #FFFFFF;
     color: #000000;
     font-family: Inter;
     font-weight: 400;
-    font-style: Regular;
     font-size: 24px;
     line-height: 100%;
     text-align: start;
@@ -70,7 +70,7 @@ input::placeholder {
 }
 
 .header__link {
-    width: 463px;
+    width: 25%;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -79,7 +79,7 @@ input::placeholder {
 
 .header-form__link,
 .header__link-mypage {
-    margin: 0 auto;
+    margin: 0 10px;
     width: 135px;
     border: 0;
     background-color: #000000;
