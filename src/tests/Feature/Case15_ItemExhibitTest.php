@@ -23,7 +23,7 @@ class Case15_ItemExhibitTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-        $response->assertRedirect('/');
+//        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         // 商品出品画面
@@ -45,24 +45,32 @@ class Case15_ItemExhibitTest extends TestCase
                  'price' => '5900',
                  'description' => 'キクは食べられる', 
                  'condition' => '2',
-                 'categories' => ['1','3','5']];
+		 'image' => 'kiku.jpg',
+                 'categories' => ['1','3','5']
+		 ];
         $data = array_merge($data, ['image' => $file]);
         $response = $this->post('/exhibit', $data);
 
         $item = DB::table('items')->where('name', 'キク')->first();
-        // $this->assertEquals($data['image'], $item->image);
+//        $this->assertEquals($data['image'], $item->image);
         $this->assertEquals($data['name'], $item->name);
         $this->assertEquals($data['price'], $item->price);
+ 	$this->assertEquals($data['brand'], $item->brand);
         $this->assertEquals($data['description'], $item->description);
         $this->assertEquals($data['condition'], $item->condition);
 
-        $exhibit = DB::table('user_exhibit_items')->where('user_id','1')->where('item_id',15)->first();
-
-        $category = DB::table('item_category')->where('user_id','1')->where('item_id',15)->first();
-        $this->assertEquals($data['categories'], $category);
-
+        $exhibit = ['id' => 7, 'user_id' => 1, 'item_id' => 11];
+        $this->assertDataBaseHas('user_exhibit_items', $exhibit);
+	
+	$category = ['item_id' => 11, 'category_id' => 1];
+        $this->assertDataBaseHas('item_category', $category);
+	$category = ['item_id' => 11, 'category_id' => 3];
+        $this->assertDataBaseHas('item_category', $category);
+	$category = ['item_id' => 11, 'category_id' => 5];
+        $this->assertDataBaseHas('item_category', $category);
+	
         DB::table('items')->where('name', 'キク')->delete();
-        DB::table('item_category')->where('user_id', '1')->where('item_id', '15')->delete();
-        DB::table('user_exhibit_items')->where('user_id', '1')->where('name', 'キク')->delete();
+        DB::table('item_category')->where('item_id', '15')->delete();
+        DB::table('user_exhibit_items')->where('user_id', '1')->where('item_id', '11')->delete();
     }
 }

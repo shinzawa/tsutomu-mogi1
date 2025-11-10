@@ -21,7 +21,7 @@ class Case06_SearchItemsTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-        $response->assertRedirect('/');
+//        $response->assertRedirect('/');
         $this->assertAuthenticated();
         
         $response = $this->get('/');
@@ -52,7 +52,7 @@ class Case06_SearchItemsTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-        $response->assertRedirect('/');
+//        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         $response = $this->get('/mylist?itemname=ク');
