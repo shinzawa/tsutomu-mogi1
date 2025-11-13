@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Stripe\StripeClient;
 use App\Models\Item;
 use App\Models\User;
 use App\Http\Requests\PurchaseRequest;
@@ -32,6 +34,7 @@ class PurchaseController extends Controller
         $zipcode = $request->input('zipcode');
         $address = $request->input('address');
         $building = $request->input('building');
+        $payment = $request->input('purchase-method');
         $item = Item::find($item_id);
         $item->buyUsers()->attach($id, ['zipcode' => $zipcode, 'address' => $address, 'building' => $building]);
 
@@ -49,7 +52,45 @@ class PurchaseController extends Controller
                 $items[] = $item;
             }
         }
-        // TODO: strip call
+
+        // StripeのAPIキーを設定します
+        $stripe = new StripeClient(env('STRIPE_SECRET_KEY'));
+
+        $price = $request->input('price');
+        $name  = $request->input('name');
+
+        if ($request->input('payment-method') == 'コンビニ払い') {
+            $paymentMethod = ['card'];
+        } else {
+            $paymentMethod = ['card'];
+        }
+
+        try {
+            // Stripe API 呼び出し
+            // 決済する商品の情報を設定します
+            $checkout_session = $stripe->checkout->sessions->create([
+                'payment_method_types' => $paymentMethod,
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'jpy',
+                        'unit_amount' => (int)$price,
+                        'product_data' => [
+                            'name' => $name,
+                        ],
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                // 決済完了後にリダイレクトされるURLを指定します
+                'success_url' => 'http://localhost/success?session_id={CHECKOUT_SESSION_ID}',
+                // 決済がキャンセルされた場合にリダイレクトされるURLを指定します
+                'cancel_url' => 'http://localhost/cancel',
+            ]);
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            dd($e->getMessage(), $e->getHttpBody());
+        }
+        // Stripeが生成した決済ページのURLにリダイレクトします
+        return Redirect::to($checkout_session->url);
 
         return view('items/index', compact('items', 'ismylist'));
     }

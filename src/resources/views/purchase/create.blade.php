@@ -108,6 +108,8 @@
                     </div>
                     <div class="purchase-action">
                         <div class="item__purchase-area">
+                            <input type="hidden" name="name" value="{{ $purchase->name}}">
+                            <input type="hidden" name="price" value="{{ $purchase->price}}">
                             <button class="item__purchase-btn">購入する</button>
                         </div>
                     </div>
