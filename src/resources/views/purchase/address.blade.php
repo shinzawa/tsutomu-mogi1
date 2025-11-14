@@ -66,11 +66,11 @@
                 <label class="address-form__label" for="building">建物名</label>
                 <input class="address-form__input" type="text" name="building" id="building" value="{{old('building')}}">
             </div>
-            @if (!empty($puchaseMethod))
-            <input type="hidden" name='purchaseMethod' value="{{ $purchaseMethod['purchaseMethod'] }}">
+            @isset($purchaseMethod)
+            <input type="hidden" name='purchaseMethod' value="{{ $purchaseMethod}}">
             @else
             <input type="hidden" name='purchaseMethod' value="">
-            @endif
+            @endisset
             <input class="address-form__btn btn" type="submit" value="更新する">
         </form>
     </div>

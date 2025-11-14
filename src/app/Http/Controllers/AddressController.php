@@ -13,8 +13,9 @@ class   AddressController extends Controller
 {
     public function show(Request $request, $item_id)
     {
-        $purchaseMethod = $request->only(['purchaseMethod']);
-                
+        $purchaseMethods = $request->only(['purchaseMethod']);
+        $purchaseMethod = $purchaseMethods['purchaseMethod'];
+
         return view('/purchase/address', compact('item_id', 'purchaseMethod'));
     }
 
@@ -33,7 +34,8 @@ class   AddressController extends Controller
         $profiles = $user->profile()->get();
         $profile = $profiles[0];
 
-        $purchaseMethod = $request->only(['purchaseMethod']);
+        $purchaseMethods = $request->only(['purchaseMethod']);
+        $purchaseMethod = $purchaseMethods['purchaseMethod'];
 
         return view('/purchase/create', compact('purchase', 'profile', 'newaddress', 'item_id', 'purchaseMethod'));
     }

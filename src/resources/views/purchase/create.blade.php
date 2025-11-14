@@ -58,11 +58,11 @@
                     <div class="purchase-method-card-select">
                         <div>
                             <div class="purchase-method-select">
-                                @if ( $purchaseMethod['purchaseMethod'] != null)
+                                @isset($purchaseMethod)
                                 <select name="purchase-method" id="purchase-method-select">
-                                    <option disable @if( $purchaseMethod['purchaseMethod']=='' ) selected @endif value=""> &nbsp;&nbsp;選択して下さい</option>
-                                    <option value="コンビニ払い" @if( $purchaseMethod['purchaseMethod']=='コンビニ払い' ) selected @endif>コンビニ払い</option>
-                                    <option value="カード支払い" @if( $purchaseMethod['purchaseMethod']=='カード支払い' ) selected @endif>カード支払い</option>
+                                    <option disable @if( $purchaseMethod=='' ) selected @endif value=""> &nbsp;&nbsp;選択して下さい</option>
+                                    <option value="コンビニ払い" @if( $purchaseMethod=='コンビニ払い' ) selected @endif>コンビニ払い</option>
+                                    <option value="カード支払い" @if( $purchaseMethod=='カード支払い' ) selected @endif>カード支払い</option>
                                 </select>
                                 @else
                                 <select name="purchase-method" id="purchase-method-select">
@@ -70,7 +70,7 @@
                                     <option value="コンビニ払い">コンビニ払い</option>
                                     <option value="カード支払い">カード支払い</option>
                                 </select>
-                                @endif
+                                @endisset
                             </div>
                             <div class="form__error">
                                 @error('purchase-method')
