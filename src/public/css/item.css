@@ -18,30 +18,6 @@
     padding-left: 40px;
 }
 
-.header__heading {
-    width:380px;
-    background-size:90%;
-}
-
-.header-form__search {
-    width: 500px;
-    font-size:24px;
-}
-
-.header__link {
-    width:480px;
-}
-
-.header-form__link {
-    width:100px;
-    font-size:24px;
-}
-
-.header__link-mypage {
-    width: 135px;
-    font-size:24px;
-}
-
 .index-card__list {
     margin-top: 72px;
     margin-right: 50px;
@@ -76,11 +52,26 @@
     height: 273;
 }
 
+.item__description-area {
+    width: 571px;
+    height: 321px;
+    margin-top: 22px;
+}
+
+.item__description {
+    width: 559px;
+    height: 247px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+    color: #000000;
+}
+
 .item__comments-btn div {
     width: 570px;
 }
-
-
 }
 
 
@@ -105,33 +96,10 @@
     padding-left: 70px;
 }
 
-
-.header-form__search {
-    width: 200px;
-    font-size:16px;
-}
-
-.header__heading {
-    width:240px;
-    background-size:90%;
-}
-
-.header__link {
-    width: 300px;
-}
-.header-form__link {
-    width:80px;
-    font-size:16px;
-}
-.header__link-mypage {
-font-size:16px;
-}
-
 .index-card__list {
     margin-top: 72px;
     margin-right: 50px;
 }
-
 
 .product__image-card  input{
     width: 300px;
@@ -160,6 +128,23 @@ font-size:16px;
 .product__description-card-title {
     width: 285px;
     height: 273;
+}
+
+.item__description-area {
+    width: 285px;
+    height: 321px;
+    margin-top: 22px;
+}
+
+.item__description {
+    width: 285px;
+    height: 247px;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    vertical-align: middle;
+    color: #000000;
 }
 
 .item__comments-btn div {
@@ -364,12 +349,6 @@ font-size:16px;
     height: 100px;
 }
 
-.item__description-area {
-    width: 571px;
-    height: 321px;
-    margin-top: 22px;
-}
-
 .item__description-title {
     font-family: Inter;
     font-weight: 700;
@@ -378,18 +357,6 @@ font-size:16px;
     vertical-align: middle;
     color: #000000;
     padding: 19px 0;
-}
-
-.item__description {
-    width: 559px;
-    height: 247px;
-    font-family: Inter;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 100%;
-    vertical-align: middle;
-    color: #000000;
-
 }
 
 .item__information {

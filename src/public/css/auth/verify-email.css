@@ -6,20 +6,12 @@
 
 @media screen and (max-width: 1400px) {
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-    padding: 22px 0 24px 0;
     height: 82px;
-    border: 1px solid #E0DFDE;
-    text-align: center;
-    font-family: serif;
-    background-color: #000000;
 }
 
 .header__heading {
     width:380px;
+    height: 46px;
     background-size:90%;
 }
 
@@ -30,28 +22,15 @@
 
 @media screen and (max-width: 800px) {
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-    padding: 22px 0 24px 0;
     height: 62px;
-    border: 1px solid #E0DFDE;
-    text-align: center;
-    font-family: serif;
-    background-color: #000000;
-}
-
-.header-form__search {
-    width: 200px;
-    font-size:16px;
 }
 
 .header__heading {
-    width:240px;
-    height: 24px;
+    width:300px;
+    height: 30px;
     background-size:90%;
     vertical-align: middle;
+    background-position: 30px 0px;
 }
 
 .mail-certification-frame-top {

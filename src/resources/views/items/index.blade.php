@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/header.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @endsection
@@ -9,7 +10,11 @@
 <div class="header__search">
     <form action="/search" method="post">
         @csrf
-        <input class="header-form__search" type="search" id="main-search" name="itemname" form="searchRecommend" placeholder="    なにをお探しですか？">
+        @isset($itemname)
+        <input class="header-form__search" type="search" id="main-search" name="itemname" form="search" value="{{ $itemname}}" placeholder="    なにをお探しですか？">
+        @else
+        <input class="header-form__search" type="search" id="main-search" name="itemname" form="search" placeholder="    なにをお探しですか？">
+        @endisset
     </form>
 </div>
 <div class="header__link">
@@ -51,15 +56,15 @@
 
 <div class="index__list">
     <div class="index__tab">
-        <form action="/" method="get" id="searchRecommend">
+        <form action="/" method="get" id="search">
             <div>
                 <input type="submit" value="おすすめ" class="index__tab-item" style={{ $ismylist ? 'color:#5F5F5F;' : 'color:#FF0000;' }}>
             </div>
         </form>
-        <form action="/mylist" method="get" id="searchMylist">
+        <form action="/mylist" method="get">
             <div>
                 <input type="hidden" id="hidden-search" name="itemname">
-                <input type="submit" value="マイリスト" onclick="copySearchValue()" class="index__tab-item" style={{ $ismylist ? "color:#FF0000;" : "color:#5F5F5F;"}} >
+                <input type="submit" value="マイリスト" onclick="copySearchValue()" class="index__tab-item" style={{ $ismylist ? "color:#FF0000;" : "color:#5F5F5F;"}}>
             </div>
         </form>
     </div>
@@ -72,23 +77,23 @@
             @foreach($items as $item)
             <div class="index-card__list">
                 <a href="/items/{{ $item->id}}" class="item-card">
-                <div class="index-card__item">
-                    <div class="index-card__image">
-                        <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="290px" height="282px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
+                    <div class="index-card__item">
+                        <div class="index-card__image">
+                            <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="290px" height="282px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
+                        </div>
+                        <div class="index-card__title">
+                            <span class="index-cart__title-name"> {{ $item->name }}</span>
+                            @if (count($item->buyUsers()->get()) > 0)
+                            <span class="index-card__title-sold">Sold</span>
+                            @endif
+                        </div>
                     </div>
-                    <div class="index-card__title">
-                        <span class="index-cart__title-name"> {{ $item->name }}</span>
-                        @if (count($item->buyUsers()->get()) > 0)
-                        <span class="index-card__title-sold">Sold</span>
-                        @endif
-                    </div>
-                </div>
                 </a>
             </div>
             @endforeach
             @endif
+        </div>
     </div>
-</div>
 </div>
 <script src="{{ asset('/js/index.js') }}"></script>
 @endsection

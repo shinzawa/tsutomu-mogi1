@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/header.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/mypage/index.css') }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @endsection
@@ -9,7 +10,7 @@
 <div class="header__search">
     <form action="/search" method="post">
         @csrf
-        <input class="header-form__search" type="text" name="text" placeholder="    なにをお探しですか？">
+        <input class="header-form__search" type="text" name="itemname" placeholder="    なにをお探しですか？">
     </form>
 </div>
 <div class="header__link">

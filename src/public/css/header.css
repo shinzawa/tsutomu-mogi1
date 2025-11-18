@@ -1,0 +1,150 @@
+.header__link {
+    width: 600px;
+}
+
+.header__search {
+    width: 20%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-form__search::placeholder {
+    color: #000000;
+}
+
+.header-form__search {
+    box-sizing: border-box;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: start;
+    vertical-align: middle;
+}
+
+.header__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-form__link,
+.header__link-mypage {
+    margin: 0 10px;
+    width: 135px;
+    border: 0;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-decoration: none;
+
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+.header__link-rect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    margin-right: 26px;
+    border-radius: 4px;
+    background: #FFFFFF;
+}
+
+.header__link-sell {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #000000;
+}
+
+@media screen and (max-width: 1400px) {
+.header-form__search {
+    width: 400px;
+    font-size:24px;
+}
+
+.header__heading {
+    width:380px;
+    background-size:80%;
+    background-position: 70px 10px;
+}
+
+.header__link {
+    width: 550px;
+}
+
+.header__link-sell {
+    font-size: 24px;
+}
+
+.header__link-rect {
+    width: 80px;
+}
+
+.header-form__link {
+    width:120px;
+    font-size:24px;
+}
+
+.header__link-mypage {
+    width: 135px;
+    font-size:24px;
+}
+}
+
+@media screen and (max-width: 800px) {
+.header-form__search {
+    width: 180px;
+    font-size:16px;
+}
+
+.header__heading {
+    width:240px;
+    height: 20px;
+    background-size: 70%;
+    background-position: 30px 0px;
+}
+
+.header__link {
+    width: 340px;
+}
+
+.header__link-sell {
+    font-size: 16px;
+}
+
+.header__link-rect {
+    width: 60px;
+}
+
+.header-form__link {
+    width:80px;
+    font-size:16px;
+}
+
+.header__link-mypage {
+    width: 80px;
+    font-size:16px;
+}
+}

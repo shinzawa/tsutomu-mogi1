@@ -12,6 +12,10 @@ class ItemController extends Controller
     public function index(Request $request, $tab = 'recommended')
     {
         $id = Auth::id();
+        $itemname = '';
+        if($request->itemname !=null) {
+            $itemname = $request->itemname;
+        }
         $itemsAll = Item::query()->nameSearch($request->itemname)->get();
         if ($tab == 'mylist') {
             $ismylist = true;
@@ -47,7 +51,7 @@ class ItemController extends Controller
             }
         }
 
-        return view('items/index', compact('items', 'ismylist'));
+        return view('items/index', compact('items', 'ismylist', 'itemname'));
     }
 
     public function show($item_id)

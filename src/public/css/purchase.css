@@ -1,38 +1,45 @@
+.purchase-form {
+    width: 1500px;
+}
+
+.purchase-left-area {
+    width: 50%;
+    height: auto;
+    margin: 95px 51px 0px 80px;
+}
+
+.purchase-right-area {
+    width: 440px;
+    height: auto;
+    margin: 95px 31px 95px auto;
+}
+
+.purchase-lower {
+    width: 750px;
+    margin: 1px 51px 20px 80px;
+}
+
+.purchase-lower-up {
+    width: 750px;
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 1400px) {
-    .header__heading {
-    width:380px;
-    background-size:90%;
-}
-
-.header-form__search {
-    width: 500px;
-    font-size:24px;
-}
-
-.header__link {
-    width:480px;
-}
-
-.header-form__link {
-    width:100px;
-    font-size:24px;
-}
-
-.header__link-mypage {
-    width: 135px;
-    font-size:24px;
-}
-
-.header__link-sell {
-    font-size:24px;
+.purchase-form {
+    width: 1400px;
 }
 
 .purchase-card__title {
     font-size: 45px;
 }
 
+.purchase-card__title-name {
+    width: 450px;
+}
+
 .purchase-card__title-method {
-        font-size: 30px;
+    font-size: 30px;
 }
 
 .purchase-card__title-price span {
@@ -51,6 +58,10 @@
     font-size: 24px;
 }
 
+#purchase-method-select {
+    font-size: 24px;
+}
+
 .purchase-lower-up-right,
 .purchase-address-change-btn,
 .purchase-address-card div ,
@@ -65,9 +76,9 @@
 }
 
 .purchase-right-area {
-    width: 442px;
+    width: 380px;
     height: auto;
-    margin: 95px 62px 95px 51px;
+    margin: 95px 62px 95px 30px;
 }
 
 .purchase-lower {
@@ -84,39 +95,20 @@
 
 
 @media screen and (max-width: 800px) {
-
-.header-form__search {
-    width: 200px;
-    font-size:16px;
-}
-
-.header__heading {
-    width:240px;
-    background-size:90%;
-}
-
-.header__link {
-    width: 300px;
-}
-.header-form__link {
-    width:80px;
-    font-size:16px;
-}
-
-.header__link-sell {
-    font-size: 18px;
-}
-
-.header__link-mypage {
-    font-size:16px;
+.purchase-form {
+    width: 100%;
 }
 
 .purchase-card__title {
     font-size: 22px;
 }
 
+.purchase-card__title-name {
+    width: 230px;
+}
+
 .purchase-card__title-method {
-        font-size: 15px;
+    font-size: 15px;
 }
 
 .purchase-card__title-price span {
@@ -132,6 +124,10 @@
 .purchase-price-card-title-price ,
 .purchase-method__card-title2,
 .purchase-method__card-title-method {
+    font-size: 12px;
+}
+
+#purchase-method-select {
     font-size: 12px;
 }
 
@@ -151,16 +147,16 @@
 .purchase-right-area {
     width: 238px;
     height: auto;
-    margin: 95px 31px 95px 25px;
+    margin: 95px 31px 95px 15px;
 }
 
 .purchase-lower {
-    width: 374px;
+    width: 384px;
     margin: 1px 25px 20px 40px;
 }
 
 .purchase-lower-up {
-    width: 374px;
+    width: 384px;
     display: flex;
     justify-content: space-between;
 }
@@ -173,7 +169,7 @@
 .purchase-all {
     height: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 
@@ -219,6 +215,7 @@
 }
 
 .purchase-card__title-name {
+    width: 450px;
     font-weight: 700;
     line-height: 100%;
     vertical-align: middle;

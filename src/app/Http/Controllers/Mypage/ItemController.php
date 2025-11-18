@@ -31,13 +31,15 @@ class ItemController extends Controller
         return view('/mypage/index', compact('profile', 'buyItems', 'exhibitItems', 'isSellPage'));
     }
 
-    public function show() {
+    public function show()
+    {
         $categories = Category::all();
 
         return view('/mypage/exhibit', compact('categories'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // store image file to defined place
         $image = $request->file('image');
         if (isset($image)) {
@@ -62,7 +64,7 @@ class ItemController extends Controller
         // exhibit
         $id = Auth::id();
         $item->exhibitUsers()->attach($id);
-        
+
         return view('/items/index');
     }
 }

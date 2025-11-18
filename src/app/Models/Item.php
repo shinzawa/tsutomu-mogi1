@@ -13,27 +13,27 @@ class Item extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'item_category', 'item_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'item_category', 'item_id', 'category_id')->withTimestamps();
     }
 
     public function comments()
     {
-        return $this->belongsToMany(User::class)->withPivot('comment');
+        return $this->belongsToMany(User::class)->withPivot('comment')->withTimestamps();
     }
 
     public function nices()
     {
-        return $this->belongsToMany(User::class, 'user_nice_items', 'item_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_nice_items', 'item_id', 'user_id')->withTimestamps();
     }
 
     public function buyUsers()
     {
-        return $this->belongsToMany(User::class, 'user_buy_items', 'item_id', 'user_id')->withPivot(['zipcode','address','building']);
+        return $this->belongsToMany(User::class, 'user_buy_items', 'item_id', 'user_id')->withPivot(['zipcode','address','building'])->withTimestamps();
     }
 
     public function exhibitUsers()
     {
-        return $this->belongsToMany(User::class, 'user_exhibit_items', 'item_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_exhibit_items', 'item_id', 'user_id')->withTimestamps();
     }
 
     public function scopeNameSearch($query, $name)
