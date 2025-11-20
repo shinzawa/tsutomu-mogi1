@@ -22,7 +22,7 @@ class Case09_ItemCommentTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-//        $response->assertRedirect('/');
+        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         $response = $this->get('/items/2');
@@ -30,7 +30,7 @@ class Case09_ItemCommentTest extends TestCase
 
         $commentData = ['comment' => 'これは商品２のコメントです。user1'];
         $response = $this->post('/comment/2', $commentData);
-//        $response->assertRedirect('/items/2');
+        $response->assertRedirect('/items/2');
     }
 
     public function test_ログイン前のユーザーはコメントを送信できない()
@@ -59,7 +59,7 @@ class Case09_ItemCommentTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-//        $response->assertRedirect('/');
+        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         $response = $this->get('/items/2');
@@ -68,7 +68,7 @@ class Case09_ItemCommentTest extends TestCase
         $commentData = ['comment' => ''];
         $response = $this->post('/comment/2', $commentData);
 
-//        $response->assertRedirect('/items/2');
+        $response->assertRedirect('/items/2');
         $response->assertSessionHasErrors(['comment' => 'コメントを入力してください',]);
     }
 
@@ -82,7 +82,7 @@ class Case09_ItemCommentTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-//        $response->assertRedirect('/');
+        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         $response = $this->get('/items/2');
@@ -93,7 +93,7 @@ class Case09_ItemCommentTest extends TestCase
 01234567890123456789012345'];
         $response = $this->post('/comment/2', $commentData);
 
-//        $response->assertRedirect('/items/2');
+        $response->assertRedirect('/items/2');
         $response->assertSessionHasErrors(['comment' => 'コメントは255文字以内で入力してください',]);
     }
 }

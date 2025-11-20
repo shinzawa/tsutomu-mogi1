@@ -23,7 +23,7 @@ class Case15_ItemExhibitTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-//        $response->assertRedirect('/');
+        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         // 商品出品画面
@@ -52,7 +52,7 @@ class Case15_ItemExhibitTest extends TestCase
         $response = $this->post('/exhibit', $data);
 
         $item = DB::table('items')->where('name', 'キク')->first();
-//        $this->assertEquals($data['image'], $item->image);
+        $this->assertEquals($data['image'], $item->image);
         $this->assertEquals($data['name'], $item->name);
         $this->assertEquals($data['price'], $item->price);
  	$this->assertEquals($data['brand'], $item->brand);

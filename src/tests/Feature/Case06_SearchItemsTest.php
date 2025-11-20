@@ -21,7 +21,7 @@ class Case06_SearchItemsTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-//        $response->assertRedirect('/');
+        $response->assertRedirect('/');
         $this->assertAuthenticated();
         
         $response = $this->get('/');
@@ -52,7 +52,7 @@ class Case06_SearchItemsTest extends TestCase
             'password' => 'coachtech111',
         ];
         $response = $this->post('/login', $data);
-//        $response->assertRedirect('/');
+        $response->assertRedirect('/');
         $this->assertAuthenticated();
 
         $response = $this->get('/mylist?itemname=ク');
@@ -61,7 +61,7 @@ class Case06_SearchItemsTest extends TestCase
         $response->assertStatus(200);
         $response->assertDontSeeText('腕時計');
         $response->assertDontSeeText('革靴');
-        $response->assertDontSeeText('ショルダーバッグ');
+        $response->assertSeeText('ショルダーバッグ');
         $response->assertSeeText('メイクセット');
         $response->assertDontSeeText('HDD');
         $response->assertDontSeeText('玉ねぎ3束');
