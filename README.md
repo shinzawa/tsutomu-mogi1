@@ -6,8 +6,6 @@
 1. docker-compose up -d --build
 ### Laravel 環境構築
 1. docker-compose exec php bash
-1. composer require laravel/fortify
-1. composer require laravel-lang/lang:~7.0 --dev
 1. composer install
 1. .env.exampleファイルから.envを作成し、環境変数を変更
 1. php artisan key:generate
