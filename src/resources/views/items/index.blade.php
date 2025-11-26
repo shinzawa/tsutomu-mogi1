@@ -37,23 +37,6 @@
 @endsection
 
 @section('content')
-<div class="index__alert">
-    @if(session('message'))
-    <div class="index__alert--success">
-        {{ session('message') }}
-    </div>
-    @endif
-    @if($errors->any())
-    <div class="index__alert--danger">
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-</div>
-
 <div class="index__list">
     <div class="index__tab">
         <form action="/" method="get" id="search">
@@ -82,7 +65,7 @@
                             <input type="image" src="{{ asset(  'storage/' . $item->image )}}" width="290px" height="282px" style="object-fit: cover;" alt="{{ $item->image}}"></input>
                         </div>
                         <div class="index-card__title">
-                            <span class="index-cart__title-name"> {{ $item->name }}</span>
+                            <span class="index-card__title-name"> {{ $item->name }}</span>
                             @if (count($item->buyUsers()->get()) > 0)
                             <span class="index-card__title-sold">Sold</span>
                             @endif

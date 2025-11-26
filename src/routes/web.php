@@ -6,7 +6,6 @@ use App\Http\Controllers\Mypage\ItemController as MypageItemController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddressController;
-use App\Http\Controllers\SendMailTest;
 
 use Illuminate\Support\Facades\Route;
 
@@ -39,9 +38,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/purchase/address/{item_id} ', [AddressController::class, 'update']);
     Route::post('/comment/{item_id}', [CommentController::class, 'store']);
 });
-
-Route::get('/mail', [SendMailTest::class, 'index']);
-Route::post('/mail', [SendMailTest::class, 'send']);
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/{tab?}', [ItemController::class, 'index']);
