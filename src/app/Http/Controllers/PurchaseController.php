@@ -57,34 +57,66 @@ class PurchaseController extends Controller
 
         $price = $request->input('price');
         $name  = $request->input('name');
+        $params = [
+            'ismylist' => $ismylist,
+            'items' => $item,
+        ];
 
-        if ($request->input('payment-method') == 'コンビニ払い') {
-            $paymentMethod = ['card'];
-        } else {
-            $paymentMethod = ['card'];
-        }
+        // JSON化してURLエンコード
+        $query = http_build_query([
+            'session_id' => '{CHECKOUT_SESSION_ID}',
+            'data' => json_encode($params),
+        ]);
+
+        $successUrl = "https://localhost/items/index?{$query}";
+
 
         try {
             // Stripe API 呼び出し
             // 決済する商品の情報を設定します
-            $checkout_session = $stripe->checkout->sessions->create([
-                'payment_method_types' => $paymentMethod,
-                'line_items' => [[
-                    'price_data' => [
-                        'currency' => 'jpy',
-                        'unit_amount' => (int)$price,
-                        'product_data' => [
-                            'name' => $name,
+            if ($request->input('payment-method') == 'コンビニ払い') {
+                $paymentMethod = ['konbini'];
+                $checkout_session = $stripe->checkout->sessions->create([
+                    'payment_method_types' => $paymentMethod,
+                    'line_items' => [[
+                        'price_data' => [
+                            'currency' => 'jpy',
+                            'unit_amount' => (int)$price,
+                            'product_data' => [
+                                'name' => $name,
+                            ],
                         ],
-                    ],
-                    'quantity' => 1,
-                ]],
-                'mode' => 'payment',
-                // 決済完了後にリダイレクトされるURLを指定します
-                'success_url' => 'http://localhost/success?session_id={CHECKOUT_SESSION_ID}',
-                // 決済がキャンセルされた場合にリダイレクトされるURLを指定します
-                'cancel_url' => 'http://localhost/cancel',
-            ]);
+                        'quantity' => 1,
+                    ]],
+                    'mode' => 'payment',
+                    // 決済完了後にリダイレクトされるURLを指定します
+                    'success_url' => $successUrl,
+                    // 決済がキャンセルされた場合にリダイレクトされるURLを指定します
+                    'cancel_url' => 'http://localhost/items/$item_id',
+                ]);
+            } else {
+                $customerId = 'cus_TPIph6r9CGqocr';
+                $paymentMethod = ['customer_balance'];
+                $checkout_session = $stripe->checkout->sessions->create([
+                    'payment_method_types' => $paymentMethod,
+                    'customer' => $customerId,
+                    'line_items' => [[
+                        'price_data' => [
+                            'currency' => 'jpy',
+                            'unit_amount' => (int)$price,
+                            'product_data' => [
+                                'name' => $name,
+                            ],
+                        ],
+                        'quantity' => 1,
+                    ]],
+                    'mode' => 'payment',
+                    // 決済完了後にリダイレクトされるURLを指定します
+                    'success_url' => $successUrl,
+                    // 決済がキャンセルされた場合にリダイレクトされるURLを指定します
+                    'cancel_url' => 'http://localhost/items/$item_id',
+                ]);
+            }
         } catch (\Stripe\Exception\ApiErrorException $e) {
             dd($e->getMessage(), $e->getHttpBody());
         }
