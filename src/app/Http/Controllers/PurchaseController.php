@@ -77,6 +77,7 @@ class PurchaseController extends Controller
             if ($request->input('payment-method') == 'コンビニ払い') {
                 $paymentMethod = ['konbini'];
                 $checkout_session = $stripe->checkout->sessions->create([
+                    'mode' => 'payment',
                     'payment_method_types' => $paymentMethod,
                     'line_items' => [[
                         'price_data' => [
@@ -88,7 +89,6 @@ class PurchaseController extends Controller
                         ],
                         'quantity' => 1,
                     ]],
-                    'mode' => 'payment',
                     // 決済完了後にリダイレクトされるURLを指定します
                     'success_url' => $successUrl,
                     // 決済がキャンセルされた場合にリダイレクトされるURLを指定します
@@ -98,6 +98,7 @@ class PurchaseController extends Controller
                 $customerId = 'cus_TPIph6r9CGqocr';
                 $paymentMethod = ['customer_balance'];
                 $checkout_session = $stripe->checkout->sessions->create([
+                    'mode' => 'payment',
                     'payment_method_types' => $paymentMethod,
                     'customer' => $customerId,
                     'line_items' => [[
@@ -110,7 +111,14 @@ class PurchaseController extends Controller
                         ],
                         'quantity' => 1,
                     ]],
-                    'mode' => 'payment',
+                    'payment_method_options' => [
+                        'customer_balance' => [
+                           'funding_type' => 'bank_transfer',
+                           'bank_transfer' => [
+                               'type' => 'jp_bank_transfer', // 日本の銀行振込を指定
+                           ],
+                        ],
+                    ],
                     // 決済完了後にリダイレクトされるURLを指定します
                     'success_url' => $successUrl,
                     // 決済がキャンセルされた場合にリダイレクトされるURLを指定します
