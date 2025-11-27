@@ -42,7 +42,9 @@ MAIL_FROM_NAME="${APP_NAME}"
 1. chmod -R 777 storage bootstrap/cache
 1. php artisan storage:link
 
-ここまで通常の環境設定です。ここからは追加でFeatureTest とDustTest の環境構築の記述になります。
+ここまで通常の環境設定です。
+#### Laravel Feature test 環境構築
+ここからは追加でFeatureTest とDustTest の環境構築の記述になります。
 
 まず、FeatureTest は以下を追加します。
 1. テスト用データーベースの準備
@@ -159,8 +161,17 @@ colors="true"
 $ php artisan test --env=testing
 ```
 
+#### Laravel Dust test 環境構築
 ここからは、DustTest の環境設定です。
-1. .env から.env.dusk.local をcopy して編集する
+1\. テスト用データーベースの準備
+```
+MySQL コンテナに入る
+$ docker-compose exec mysql bash
+$ mysql -u root -p
+> CREATE DATABASE demo_test;
+> SHOW DATABASES;
+```
+2\. .env から.env.dusk.local をcopy して編集する
 ```
 cp src/.env src/.env.dusk.local
 ```
@@ -189,32 +200,71 @@ APP_DEBUG=true
 ```
 APP_KEY に新たなテスト用アプリケーションキーを追加する。以下データベースのテーブル作成とシーディングを行う時には`--env=dusk.local` を追加する。
 
-1. php artisan key:generate --env=dusk.local
+3\. php artisan key:generate --env=dusk.local
 1. php artisan migrate --env=dusk.local
 1. php artisan db:seed --env=dusk.local
 1. chmod -R 777 storage bootstrap/cache
 1. php artisan storage:link
 1. php artisan dusk:install
 1. src/tests/DuskTestCase.php を編集
-1.1. prepare() 関数の中身をcomment out
+```diff_php:src/tests/DuskTestCase.php
+prepare() 関数の中身をcomment out
     public static function prepare()
     {
-        // if (! static::runningInSail()) {
-        //     static::startChromeDriver();
-        // }
+!        // if (! static::runningInSail()) {
+!        //     static::startChromeDriver();
+!        // }
     }
-1.1. option を追加
+option を追加
             return $items->merge([
                 '--disable-gpu',
                 '--headless',
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
++               '--no-sandbox',
++               '--disable-dev-shm-usage',
 	]);
-
+```
 Dusk テストでは、chrome を介してテストを行うので、.env.dusk.local と同じ内容の.env を用意する。
 ```
 cp src/.env.dusk.local src/.env
 ```
+
+テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
+```diff_php:phpunit.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+bootstrap="vendor/autoload.php"
+colors="true"
+>
+<testsuites>
+    <testsuite name="Unit">
+        <directory suffix="Test.php">./tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Feature">
+        <directory suffix="Test.php">./tests/Feature</directory>
+    </testsuite>
+</testsuites>
+<coverage processUncoveredFiles="true">
+    <include>
+        <directory suffix=".php">./app</directory>
+    </include>
+</coverage>
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+-         <!-- <server name="DB_CONNECTION" value="sqlite"/> -->
+-         <!-- <server name="DB_DATABASE" value=":memory:"/> -->
++         <server name="DB_CONNECTION" value="mysql_test"/>
++         <server name="DB_DATABASE" value="demo_test"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>
+```
+
 テストは以下のコマンドで実行します
 ```:PHPコンテナ内
 $ php artisan dusk --env=dusk.local
