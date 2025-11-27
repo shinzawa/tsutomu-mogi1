@@ -33,10 +33,10 @@ DB_PORT=3306
 ここまで通常の環境設定です。
 
 9. ユーザー情報
-name  email             password
-test1 test1@example.com coachtech111
-test2 test2@example.com coachtech112
-test3 test3@example.com coachtech113
+- name  email             password
+- test1 test1@example.com coachtech111
+- test2 test2@example.com coachtech112
+- test3 test3@example.com coachtech113
 
 10. テスト手順は機能要件の機能詳細に準ずる
 
