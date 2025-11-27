@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class Case16_email_certification extends DuskTestCase
+class Case16_email_certificationTest extends DuskTestCase
 {
     /**
      * A basic browser test example.

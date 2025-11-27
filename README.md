@@ -274,7 +274,7 @@ colors="true"
 
 17. テストは以下のコマンドで実行します
 ```:PHPコンテナ内
-$ php artisan dusk --env=dusk.local
+$ php artisan dusk
 ```
 
 ## 使用技術（実行環境）

@@ -5,7 +5,7 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class Case11_payment_method extends DuskTestCase
+class Case11_payment_methodTest extends DuskTestCase
 {
     /**
      * A basic browser test example.
