@@ -56,7 +56,7 @@ $ mysql -u root -p
 > SHOW DATABASES;
 ```
 
-1. database.php の編集(FeatureTest で用いるデーターベースの設定)
+2. database.php の編集(FeatureTest で用いるデーターベースの設定)
 ```diff_php:database.php
 'mysql' => [
 // 中略
@@ -82,11 +82,11 @@ $ mysql -u root -p
 +             ]) : [],
 + ],
 ```
-.env をコピーして.env.testing を作成する
+3. .env をコピーして.env.testing を作成する
 ```
 cp src/.env src/.env.testing
 ```
-.env.testing ファイルの始めのAPP_ENV と APP_KEY を編集する
+4. .env.testing ファイルの始めのAPP_ENV と APP_KEY を編集する
 ```diff_php:.env.testing
 APP_NAME=Laravel
 - APP_ENV=local
@@ -96,7 +96,7 @@ APP_NAME=Laravel
 APP_DEBUG=true
 APP_URL=http://localhost
 ```
-.env.testing に データベースの接続情報を追加する。
+5. .env.testing に データベースの接続情報を追加する。
 ```diff_php:.env.testing
   DB_CONNECTION=mysql_test
   DB_HOST=mysql
@@ -108,18 +108,18 @@ APP_URL=http://localhost
 + DB_USERNAME=root
 + DB_PASSWORD=root
 ```
-APP_KEY に新たなテスト用アプリケーションキーを追加する
+6. APP_KEY に新たなテスト用アプリケーションキーを追加する
 ```PHPコンテナ上
 $ php artisan key:generate --env=testing
 $ php artisan config:clear
 ```
 
-1. php artisan migrate --env=testing
-1. php artisan db:seed --env=testing
-1. chmod -R 777 storage bootstrap/cache
-1. php artisan storage:link
+7. php artisan migrate --env=testing
+8. php artisan db:seed --env=testing
+9. chmod -R 777 storage bootstrap/cache
+10. php artisan storage:link
 
-最後に、テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
+11. 最後に、テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
 ```diff_php:phpunit.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -163,7 +163,7 @@ $ php artisan test --env=testing
 
 #### Laravel Dust test 環境構築
 ここからは、DustTest の環境設定です。
-1\. テスト用データーベースの準備
+1. テスト用データーベースの準備
 ```
 MySQL コンテナに入る
 $ docker-compose exec mysql bash
@@ -171,11 +171,12 @@ $ mysql -u root -p
 > CREATE DATABASE demo_test;
 > SHOW DATABASES;
 ```
-2\. .env から.env.dusk.local をcopy して編集する
+2. .env から.env.dusk.local をcopy して編集する
 ```
 cp src/.env src/.env.dusk.local
 ```
-.env.dusk.local ファイルの始めのAPP_ENV と APP_KEY APP_URL  を編集する。
+
+3. .env.dusk.local ファイルの始めのAPP_ENV と APP_KEY, APP_URL  を編集する。
 ```diff_php:.env.dusk.local
 APP_NAME=Laravel
 - APP_ENV=local
@@ -186,7 +187,7 @@ APP_DEBUG=true
 - APP_URL=http://localhost
 + APP_URL=http://nginx
 ```
-.env.dusk.local に データベースの接続情報を追加する。
+4. .env.dusk.local に データベースの接続情報を追加する。
 ```diff_php:.env.testing
   DB_CONNECTION=mysql_test
   DB_HOST=mysql
@@ -198,16 +199,18 @@ APP_DEBUG=true
 + DB_USERNAME=root
 + DB_PASSWORD=root
 ```
+
 APP_KEY に新たなテスト用アプリケーションキーを追加する。以下データベースのテーブル作成とシーディングを行う時には`--env=dusk.local` を追加する。
 
-3\. php artisan key:generate --env=dusk.local
-1. php artisan migrate --env=dusk.local
-1. php artisan db:seed --env=dusk.local
-1. chmod -R 777 storage bootstrap/cache
-1. php artisan storage:link
-1. php artisan dusk:install
-1. src/tests/DuskTestCase.php を編集
-```diff_php:src/tests/DuskTestCase.php
+4. php artisan key:generate --env=dusk.local
+5. php artisan migrate --env=dusk.local
+6. php artisan db:seed --env=dusk.local
+7. chmod -R 777 storage bootstrap/cache
+8. php artisan storage:link
+9. php artisan dusk:install
+10. src/tests/DuskTestCase.php を編集
+
+```php:src/tests/DuskTestCase.php
 prepare() 関数の中身をcomment out
     public static function prepare()
     {
@@ -223,12 +226,13 @@ option を追加
 +               '--disable-dev-shm-usage',
 	]);
 ```
-Dusk テストでは、chrome を介してテストを行うので、.env.dusk.local と同じ内容の.env を用意する。
+
+11. Dusk テストでは、chrome を介してテストを行うので、.env.dusk.local と同じ内容の.env を用意する。
 ```
 cp src/.env.dusk.local src/.env
 ```
 
-テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
+12. テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
 ```diff_php:phpunit.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -265,16 +269,18 @@ colors="true"
 </phpunit>
 ```
 
-テストは以下のコマンドで実行します
+13. テストは以下のコマンドで実行します
 ```:PHPコンテナ内
 $ php artisan dusk --env=dusk.local
 ```
 
 ## 使用技術（実行環境）
-PHP 8.1.33 
-Laravel Framework 8.83.8
-Ubuntu 24.04.2 LTS (on WSL)
-nginx:1.21.1
+1. PHP 8.1.33 
+2. Laravel Framework 8.83.8
+3. Ubuntu 24.04.2 LTS (on WSL)
+4. nginx:1.21.1
+5. mailhog
+6. selenium
 ## ER図
 ![ER図](ER.drawio.png)
 ## URL
