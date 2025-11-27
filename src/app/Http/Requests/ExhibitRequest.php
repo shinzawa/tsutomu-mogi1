@@ -24,12 +24,12 @@ class ExhibitRequest extends FormRequest
     public function rules()
     {
         return [
-           'name' =>  'required',
-           'description' => 'required | max:255',
-           'image' => 'required | mpeg:png,jpeg',
-           'categories' => 'required',
-           'condition' => 'required',
-           'price'  => 'required | min:0 | numeric',
+            'image' => 'required | mpeg:png,jpeg',
+            'name' =>  'required',
+            'description' => 'required | max:255',
+            'categories' => 'required',
+            'condition' => 'required',
+            'price'  => 'required | min:0 | numeric',
         ];
     }
         public function messages()
@@ -40,7 +40,8 @@ class ExhibitRequest extends FormRequest
             'name.required' => '商品名を入力してください',
             'description.required' => '商品詳細を入力してください',
             'description.max' => '商品詳細は255文字以内で入力してください',
-            'categoryies.required' => '商品カテゴリを選択してください',
+            'categories.required' => '商品カテゴリを選択してください',
+            'condition.required' => '商品の状態を選択してください',
             'price.required' => '商品価格を入力してください',
             'price.min' => '商品価格は0円以上で入力してください',
             'price.numeric' => '商品価格は数値型で入力してください', 

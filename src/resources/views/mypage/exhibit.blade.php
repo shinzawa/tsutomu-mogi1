@@ -78,6 +78,11 @@
                             <label for="{{$loop->iteration}}" class="exhibit-detail__item-category">{{ $category->name}}</label>
                             @endforeach
                         </div>
+                        <div class="exhibit-form__error-message">
+                            @error('categories')
+                            {{ $message }}
+                            @enderror
+                        </div>
                         <p class="exhibit-detail__item-condition-title">商品の状態</p>
                         <div class="exhibit-detail__item-condition">
                             <select name="condition">
@@ -87,6 +92,11 @@
                                 <option value="3">やや傷や汚れあり</option>
                                 <option value="4">状態が悪い</option>
                             </select>
+                            <div class="exhibit-form__error-message">
+                                @error('condition')
+                                {{ $message }}
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,7 +114,7 @@
 
                         <div class="exhibit-form__error-message">
                             @error('name')
-                            {{$errors('name')}}
+                            {{ $message }}
                             @enderror
                         </div>
                     </div>
@@ -116,11 +126,6 @@
                         <div class="exhibit-form__inputs">
                             <input class="exhibit-form__input" type="zipcode" name="brand" id="brand">
                         </div>
-                        <p class="exhibit-form__error-message">
-                            @error('zipcode')
-                            {{ $message }}
-                            @enderror
-                        </p>
                     </div>
 
                     <div class="exhibit-form__group">
@@ -129,7 +134,7 @@
                         </label>
                         <input class="exhibit-form__input-textarea" type="textarea" name="description" id="description">
                         <p class="exhibit-form__error-message">
-                            @error('address')
+                            @error('description')
                             {{ $message }}
                             @enderror
                         </p>
@@ -140,6 +145,11 @@
                             価格
                         </label>
                         <input class="exhibit-form__input-price" type="number" name="price" id="price">
+                        <p class="exhibit-form__error-message">
+                            @error('price')
+                            {{ $message }}
+                            @enderror
+                        </p>
                     </div>
 
                 </div>
