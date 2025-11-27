@@ -36,7 +36,7 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 // 後略
 ```
-1. php artisan key:generate
+4. php artisan key:generate
 1. php artisan migrate
 1. php artisan db:seed
 1. chmod -R 777 storage bootstrap/cache
@@ -202,13 +202,13 @@ APP_DEBUG=true
 
 APP_KEY に新たなテスト用アプリケーションキーを追加する。以下データベースのテーブル作成とシーディングを行う時には`--env=dusk.local` を追加する。
 
-4. php artisan key:generate --env=dusk.local
-5. php artisan migrate --env=dusk.local
-6. php artisan db:seed --env=dusk.local
-7. chmod -R 777 storage bootstrap/cache
-8. php artisan storage:link
-9. php artisan dusk:install
-10. src/tests/DuskTestCase.php を編集
+5. php artisan key:generate --env=dusk.local
+6. php artisan migrate --env=dusk.local
+7. php artisan db:seed --env=dusk.local
+8. chmod -R 777 storage bootstrap/cache
+9. php artisan storage:link
+10. php artisan dusk:install
+11. src/tests/DuskTestCase.php を編集
 
 ```php:src/tests/DuskTestCase.php
 prepare() 関数の中身をcomment out
@@ -227,12 +227,12 @@ option を追加
 	]);
 ```
 
-11. Dusk テストでは、chrome を介してテストを行うので、.env.dusk.local と同じ内容の.env を用意する。
+12. Dusk テストでは、chrome を介してテストを行うので、.env.dusk.local と同じ内容の.env を用意する。
 ```
 cp src/.env.dusk.local src/.env
 ```
 
-12. テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
+13. テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
 ```diff_php:phpunit.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -269,18 +269,20 @@ colors="true"
 </phpunit>
 ```
 
-13. テストは以下のコマンドで実行します
+14. テストは以下のコマンドで実行します
 ```:PHPコンテナ内
 $ php artisan dusk --env=dusk.local
 ```
 
 ## 使用技術（実行環境）
 1. PHP 8.1.33 
-2. Laravel Framework 8.83.8
-3. Ubuntu 24.04.2 LTS (on WSL)
-4. nginx:1.21.1
-5. mailhog
-6. selenium
+1. Laravel Framework 8.83.8
+1. Ubuntu 24.04.2 LTS (on WSL)
+1. nginx:1.21.1
+1. mailhog
+1. PHPUnit
+1. selenium
+1. dusk
 ## ER図
 ![ER図](ER.drawio.png)
 ## URL
