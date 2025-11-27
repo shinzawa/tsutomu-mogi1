@@ -291,3 +291,6 @@ $ php artisan dusk
 ## URL
 - ユーザー登録: http//localhost/register
 - 開発環境: http://localhost
+## 注意
+機能要件ID:FN023-3 stripe の決裁画面に接続するためにはstripe への登録が必要になります。
+また.env, .env.testing, .env.dust.local に STRIPE_SECRET_KEY を追加する必要があります。
