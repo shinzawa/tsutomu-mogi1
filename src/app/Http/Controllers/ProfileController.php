@@ -16,7 +16,7 @@ class ProfileController extends Controller
         return view('/profile/create');
     }
 
-    public function create(Request $request)
+    public function create(ProfileRequest $request)
     {
         // store image file to defined place
         $image = $request->file('image');
@@ -47,7 +47,7 @@ class ProfileController extends Controller
         return view('/profile/edit', compact('profile'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         // must delete old file 
         $id = Auth::id();

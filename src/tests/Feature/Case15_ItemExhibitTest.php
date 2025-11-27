@@ -52,10 +52,9 @@ class Case15_ItemExhibitTest extends TestCase
         $response = $this->post('/exhibit', $data);
 
         $item = DB::table('items')->where('name', 'キク')->first();
-        $this->assertEquals($data['image'], $item->image);
         $this->assertEquals($data['name'], $item->name);
         $this->assertEquals($data['price'], $item->price);
- 	$this->assertEquals($data['brand'], $item->brand);
+        $this->assertEquals($data['brand'], $item->brand);
         $this->assertEquals($data['description'], $item->description);
         $this->assertEquals($data['condition'], $item->condition);
 

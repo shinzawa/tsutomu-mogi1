@@ -24,7 +24,7 @@ class ExhibitRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required | mpeg:png,jpeg',
+            'image' => 'required | mimes:png,jpeg',
             'name' =>  'required',
             'description' => 'required | max:255',
             'categories' => 'required',
