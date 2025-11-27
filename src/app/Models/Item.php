@@ -18,7 +18,7 @@ class Item extends Model
 
     public function comments()
     {
-        return $this->belongsToMany(User::class)->withPivot('comment')->withTimestamps();
+        return $this->belongsToMany(User::class, 'comments', 'item_id', 'user_id')->withPivot('comment')->withTimestamps();
     }
 
     public function nices()
