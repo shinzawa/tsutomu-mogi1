@@ -116,7 +116,48 @@ $ php artisan config:clear
 1. php artisan db:seed --env=testing
 1. chmod -R 777 storage bootstrap/cache
 1. php artisan storage:link
-ここまでが、FeatureTest の手順でした。
+
+最後に、テスト用データベースでテストを実行するために`phpunit.xml` を編集します。
+```diff_php:phpunit.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+bootstrap="vendor/autoload.php"
+colors="true"
+>
+<testsuites>
+    <testsuite name="Unit">
+        <directory suffix="Test.php">./tests/Unit</directory>
+    </testsuite>
+    <testsuite name="Feature">
+        <directory suffix="Test.php">./tests/Feature</directory>
+    </testsuite>
+</testsuites>
+<coverage processUncoveredFiles="true">
+    <include>
+        <directory suffix=".php">./app</directory>
+    </include>
+</coverage>
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+-         <!-- <server name="DB_CONNECTION" value="sqlite"/> -->
+-         <!-- <server name="DB_DATABASE" value=":memory:"/> -->
++         <server name="DB_CONNECTION" value="mysql_test"/>
++         <server name="DB_DATABASE" value="demo_test"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>
+```
+ここまでが、FeatureTest の環境構築手順でした。
+テストは以下のコマンドで実行します
+```:PHPコンテナ内
+$ php artisan test --env=testing
+```
 
 ここからは、DustTest の環境設定です。
 1. .env から.env.dusk.local をcopy して編集する
@@ -146,8 +187,7 @@ APP_DEBUG=true
 + DB_USERNAME=root
 + DB_PASSWORD=root
 ```
-APP_KEY に新たなテスト用アプリケーションキーを追加する
-```PHPコンテナ上
+APP_KEY に新たなテスト用アプリケーションキーを追加する。以下データベースのテーブル作成とシーディングを行う時には`--env=dusk.local` を追加する。
 
 1. php artisan key:generate --env=dusk.local
 1. php artisan migrate --env=dusk.local
@@ -171,6 +211,14 @@ APP_KEY に新たなテスト用アプリケーションキーを追加する
                 '--disable-dev-shm-usage',
 	]);
 
+Dusk テストでは、chrome を介してテストを行うので、.env.dusk.local と同じ内容の.env を用意する。
+```
+cp src/.env.dusk.local src/.env
+```
+テストは以下のコマンドで実行します
+```:PHPコンテナ内
+$ php artisan dusk --env=dusk.local
+```
 
 ## 使用技術（実行環境）
 PHP 8.1.33 
