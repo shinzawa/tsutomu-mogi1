@@ -37,9 +37,9 @@ class Case10_ItemBuyTest extends TestCase
             'purchase-method' => 'コンビニ払い',
             'zipcode' => '100-1701',
             'address' => '東京都青ヶ島村１－１',
-            'building' => 'ハイツ青ヶ島'];
+            'building' => 'ハイツ青ヶ島'
+        ];
         $response = $this->post('/purchase/5', $purchaseData);
-        // $response->assertStatus(200);
 
         $item = DB::table('user_buy_items')->where('user_id', '1')->where('item_id', '5')->first();
         $this->assertEquals($purchaseData['zipcode'], $item->zipcode);
@@ -76,10 +76,8 @@ class Case10_ItemBuyTest extends TestCase
             'building' => 'ハイツ青ヶ島'
         ];
         $response = $this->post('/purchase/5', $purchaseData);
-        // $response->assertStatus(200);
 
-        $this->get('/items/index');
-        // $response->assertStatus(200);
+        $response = $this->get('/');
         $response->assertSeeInOrder(['ノートPC', 'Sold', 'マイク']);
         DB::table('user_buy_items')->where('user_id', '1')->where('item_id', '5')->delete();
     }
@@ -112,7 +110,6 @@ class Case10_ItemBuyTest extends TestCase
             'building' => 'ハイツ青ヶ島'
         ];
         $response = $this->post('/purchase/5', $purchaseData);
-        // $response->assertStatus(200);
 
         $response = $this->get('/mypage');
         $response->assertStatus(200);
@@ -120,7 +117,6 @@ class Case10_ItemBuyTest extends TestCase
         $response = $this->get('/mypage?page=buy');
         $response->assertStatus(200);
 
-        
         $response->assertSeeText('ノートPC');
         DB::table('user_buy_items')->where('user_id', '1')->where('item_id', '5')->delete();
     }
