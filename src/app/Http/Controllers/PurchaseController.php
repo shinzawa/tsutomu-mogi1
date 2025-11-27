@@ -70,11 +70,10 @@ class PurchaseController extends Controller
 
         $successUrl = "https://localhost/items/index?{$query}";
 
-
         try {
             // Stripe API 呼び出し
             // 決済する商品の情報を設定します
-            if ($request->input('payment-method') == 'コンビニ払い') {
+            if ($request->input('purchase-method') == 'コンビニ払い') {
                 $paymentMethod = ['konbini'];
                 $checkout_session = $stripe->checkout->sessions->create([
                     'mode' => 'payment',
@@ -95,12 +94,10 @@ class PurchaseController extends Controller
                     'cancel_url' => 'http://localhost/items/$item_id',
                 ]);
             } else {
-                $customerId = 'cus_TPIph6r9CGqocr';
-                $paymentMethod = ['customer_balance'];
+                $paymentMethod = ['card'];
                 $checkout_session = $stripe->checkout->sessions->create([
                     'mode' => 'payment',
                     'payment_method_types' => $paymentMethod,
-                    'customer' => $customerId,
                     'line_items' => [[
                         'price_data' => [
                             'currency' => 'jpy',
@@ -111,14 +108,6 @@ class PurchaseController extends Controller
                         ],
                         'quantity' => 1,
                     ]],
-                    'payment_method_options' => [
-                        'customer_balance' => [
-                           'funding_type' => 'bank_transfer',
-                           'bank_transfer' => [
-                               'type' => 'jp_bank_transfer', // 日本の銀行振込を指定
-                           ],
-                        ],
-                    ],
                     // 決済完了後にリダイレクトされるURLを指定します
                     'success_url' => $successUrl,
                     // 決済がキャンセルされた場合にリダイレクトされるURLを指定します

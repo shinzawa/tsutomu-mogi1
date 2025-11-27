@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\Category;
+use App\Http\Requests\ExhibitRequest;
 
 class ItemController extends Controller
 {
@@ -38,7 +39,7 @@ class ItemController extends Controller
         return view('/mypage/exhibit', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ExhibitRequest $request)
     {
         // store image file to defined place
         $image = $request->file('image');
