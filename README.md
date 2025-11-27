@@ -8,7 +8,7 @@
 1. docker-compose exec php bash
 1. composer install
 1. .env.exampleファイルから.envを作成し、環境変数を変更
-```diff_php:.envファイル
+```
 // 前略
 
 DB_CONNECTION=mysql
@@ -83,7 +83,7 @@ $ exit
 +             ]) : [],
 + ],
 ```
-5. .env をコピーして.env.testing を作成する
+5. .env.example をコピーして.env.testing を作成する
 ```
 cp src/.env.example src/.env.testing
 ```
@@ -96,14 +96,16 @@ APP_DEBUG=true
 APP_URL=http://localhost
 ```
 7. .env.testing に データベースの接続情報を追加する。
-```diff_php:.env.testing
+```
   DB_CONNECTION=mysql_test
 - DB_HOST=120.0.0.1
 + DB_HOST=mysql
   DB_PORT=3306
 - DB_DATABASE=laravel
+  DB_USERNAME=root
 - DB_PASSWORD=
 + DB_DATABASE=demo_test
+  DB_USERNAME=root
 + DB_PASSWORD=root
 ```
 
@@ -153,7 +155,7 @@ colors="true"
 ```
 ここまでが、FeatureTest の環境構築手順です。
 テストは以下のコマンドで実行します
-```:PHPコンテナ内
+```
 $ php artisan test --env=testing
 ```
 
@@ -169,7 +171,7 @@ $ mysql -u root -p
 > CREATE DATABASE demo_test;
 > SHOW DATABASES;
 ```
-4. .env から.env.dusk.local をcopy して編集する
+4. .env.example から.env.dusk.local をcopy して編集する
 ```
 cp src/.env.example src/.env.dusk.local
 ```
